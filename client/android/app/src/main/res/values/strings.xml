@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">DisCharge+</string>
+    <string name="title_activity_main">DisCharge+</string>
+    <string name="package_name">in.discharge.plus</string>
+    <string name="custom_url_scheme">in.discharge.plus</string>
+</resources>

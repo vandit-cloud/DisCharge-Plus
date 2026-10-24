@@ -48,11 +48,12 @@ export const usePatients = (filters) =>
     placeholderData: keepPreviousData, // no spinner flash on every keystroke
   });
 
-export const useEscalations = (filters = {}) =>
+export const useEscalations = (filters = {}, options = {}) =>
   useQuery({
     queryKey: ['escalations', filters],
     queryFn: () => api('/escalations', { query: filters }).then((r) => r.escalations),
     refetchInterval: 30_000, // FR-5.4: a new emergency appears without reloading
+    ...options,
   });
 
 export const useEscalation = (id) =>

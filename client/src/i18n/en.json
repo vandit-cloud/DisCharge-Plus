@@ -81,6 +81,12 @@
     "evening": "Evening",
     "night": "Night"
   },
+  "reminder": {
+    "title": "{{slot}} medicines: time to take them",
+    "body": "Take {{medicines}} and mark it in the app",
+    "critical": "Important: please don't miss this one",
+    "nudge": "{{slot}}: medicines not marked yet"
+  },
   "plan": {
     "title": "My care plan",
     "discharged": "Left hospital on {{date}}",

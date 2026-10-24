@@ -1,12 +1,29 @@
 import { NavLink, Outlet } from 'react-router';
+import { useEscalationAlerts } from '../lib/alerts.js';
 import { useAuth } from '../lib/auth.jsx';
 import { useEscalations } from '../lib/queries.js';
 import { Logo } from './Logo.jsx';
 
+function AlertsButton({ permission, onEnable }) {
+  if (permission === 'granted' || permission === 'unsupported') return null;
+  return (
+    <button
+      type="button"
+      onClick={onEnable}
+      disabled={permission === 'denied'}
+      className="mt-3 w-full rounded-lg bg-haldi px-3 py-2 text-sm font-bold text-ink hover:bg-haldi/90 disabled:bg-white/10 disabled:font-normal disabled:text-white/60"
+    >
+      {permission === 'denied' ? 'Alerts blocked: allow notifications in the browser settings' : '🔔 Turn on alerts'}
+    </button>
+  );
+}
+
 export function ClinicianShell() {
   const { user, logout } = useAuth();
-  const escalations = useEscalations({ status: 'open' });
+  // Keeps polling while the tab is hidden, so alerts still arrive when the clinician is on another tab.
+  const escalations = useEscalations({ status: 'open' }, { refetchIntervalInBackground: true });
   const openCount = escalations.data?.length ?? 0;
+  const alerts = useEscalationAlerts(escalations.data);
 
   const NAV = [
     { to: '/d', label: 'Dashboard', end: true },
@@ -53,6 +70,7 @@ export function ClinicianShell() {
           <button type="button" onClick={logout} className="mt-1 text-sm text-white/75 hover:text-white">
             Log out
           </button>
+          <AlertsButton permission={alerts.permission} onEnable={alerts.enable} />
           <p className="mt-3 text-xs text-white/50">Demo system · synthetic data only</p>
         </div>
       </aside>

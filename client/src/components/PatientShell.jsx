@@ -1,6 +1,10 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink, Outlet } from 'react-router';
 import { useAuth } from '../lib/auth.jsx';
+import { addDaysISO, istTodayISO } from '../lib/format.js';
+import { useDoses } from '../lib/queries.js';
+import { enableReminders, isApp, syncReminders } from '../lib/reminders.js';
 import { LanguageSwitch } from './LanguageSwitch.jsx';
 import { Logo } from './Logo.jsx';
 
@@ -11,9 +15,30 @@ const NAV = [
   { to: '/p/followups', icon: '📅', key: 'nav.followups' },
 ];
 
+// App only: keeps phone reminders in step with today's and tomorrow's doses. Tomorrow is included so
+// the morning reminder is set even if the app isn't opened before then. The doses query refetches
+// every minute and when the app comes back to the foreground, so a dose marked taken or a plan the
+// clinician changed replaces the old reminders. Leaving the patient pages (logout) clears them,
+// because the phone may be shared.
+function useDoseReminders(patientId) {
+  const { t } = useTranslation();
+  const today = istTodayISO();
+  const doses = useDoses(isApp ? patientId : null, { from: today, to: addDaysISO(today, 1) });
+
+  useEffect(() => {
+    enableReminders();
+    return () => { syncReminders([], t); };
+  }, []); // once: ask permission on entry, clear the reminders on leaving (logout)
+
+  useEffect(() => {
+    if (doses.data) syncReminders(doses.data, t).catch(() => {});
+  }, [doses.data, t]);
+}
+
 export function PatientShell() {
   const { t } = useTranslation();
-  const { logout } = useAuth();
+  const { user, logout } = useAuth();
+  useDoseReminders(user.patientId);
   return (
     <div className="min-h-dvh">
       <header className="sticky top-0 z-10 border-b border-line bg-paper/95 backdrop-blur">

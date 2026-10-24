@@ -4,6 +4,9 @@ services:
   - type: web
     name: discharge-api
     runtime: node
+    # Closest Render region to the users and to MongoDB Atlas (Mumbai). The default, Oregon, made
+    # every API call cross the Pacific: the dashboard took 3.3 s instead of well under 1 s.
+    region: singapore
     rootDir: server
     plan: free
     buildCommand: npm ci --omit=dev
