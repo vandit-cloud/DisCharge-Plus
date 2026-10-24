@@ -1,0 +1,29 @@
+# Render blueprint for the API (docs/10-prd.md NFR-16). In Render: New > Blueprint > pick this repo.
+# Set MONGODB_URI (MongoDB Atlas) and CLIENT_ORIGIN (your Vercel URL) when Render asks.
+services:
+  - type: web
+    name: discharge-api
+    runtime: node
+    rootDir: server
+    plan: free
+    buildCommand: npm ci --omit=dev
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 1d
+      - key: CLIENT_ORIGIN
+        sync: false
+      - key: DOSE_GRACE_MINUTES
+        value: "120"
+      - key: CRON_SCHEDULE
+        value: "*/15 * * * *"
+      # The free plan sleeps when idle, so the cron may not fire; this adds the demo "run sweep now" endpoint.
+      - key: ENABLE_DEMO_TOOLS
+        value: "true"

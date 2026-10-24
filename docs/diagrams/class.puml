@@ -1,0 +1,138 @@
+@startuml class
+!include _style.iuml
+hide circle
+skinparam linetype ortho
+skinparam defaultFontSize 14
+skinparam classAttributeIconSize 0
+skinparam class {
+  BackgroundColor #FFFFFF
+  HeaderBackgroundColor #E3F0EF
+  BorderColor #0F4C5C
+  BorderThickness 1.3
+  FontStyle bold
+}
+skinparam nodesep 40
+skinparam ranksep 55
+
+class User {
+  - userId : ObjectId
+  - fullName : String
+  - phone : String
+  - passwordHash : String
+  - role : String
+  - preferredLanguage : String
+  - isActive : Boolean
+  --
+  + login(phone : String, password : String) : Boolean
+  + logout() : void
+}
+
+class Patient {
+  - patientId : ObjectId
+  - abhaId : String
+  - dateOfBirth : Date
+  - gender : String
+  - district : String
+  --
+  + computeRiskBand() : String
+}
+
+class DischargePlan {
+  - planId : ObjectId
+  - admissionDate : Date
+  - dischargeDate : Date
+  - primaryDiagnosis : String
+  - redFlags : String[]
+  - followUpProtocol : String
+  - status : String
+  --
+  + save() : void
+  + generateFollowUps() : void
+}
+
+class Medication {
+  - medicationId : ObjectId
+  - genericName : String
+  - form : String
+  - strength : String
+}
+
+class Prescription {
+  - prescriptionId : ObjectId
+  - dosage : String
+  - frequency : String
+  - timingSlots : String[]
+  - durationDays : int
+  - isCritical : Boolean
+  --
+  + generateDoses() : void
+}
+
+class FollowUp {
+  - followUpId : ObjectId
+  - scheduledDate : Date
+  - type : String
+  - description : String
+  - status : String
+  - completedDate : Date
+  --
+  + markCompleted(date : Date) : void
+}
+
+class AdherenceRecord {
+  - adherenceId : ObjectId
+  - scheduledAt : Date
+  - status : String
+  - recordedAt : Date
+  --
+  + markTaken() : void
+  + markMissed() : void
+}
+
+class SymptomLog {
+  - symptomLogId : ObjectId
+  - reportedAt : Date
+  - symptoms : String[]
+  - severity : int
+  - triageTier : String
+  - triggeredRules : String[]
+  --
+  + save() : void
+  + setTriage(tier : String, rules : String[]) : void
+}
+
+class Escalation {
+  - escalationId : ObjectId
+  - source : String
+  - tier : String
+  - triggeredRules : String[]
+  - status : String
+  - createdAt : Date
+  - acknowledgedAt : Date
+  - resolvedAt : Date
+  - notes : String
+  --
+  + save() : void
+  + acknowledge(clinicianId : ObjectId) : void
+  + resolve(notes : String) : void
+}
+
+class RuleEngine {
+  + evaluate(log : SymptomLog, plan : DischargePlan) : String
+  + checkMissedDose(record : AdherenceRecord) : Boolean
+}
+
+User "1" -right- "0..1" Patient : has profile >
+Patient "1" -right- "0..*" DischargePlan : receives >
+User "1" -up- "0..*" DischargePlan : authors >
+DischargePlan "1" *-right- "1..*" Prescription
+Prescription "0..*" -right-> "1" Medication
+DischargePlan "1" *-down- "0..*" FollowUp
+Prescription "1" *-down- "0..*" AdherenceRecord
+Patient "1" -down- "0..*" SymptomLog : reports >
+SymptomLog "1" -left- "0..1" Escalation : triggers >
+AdherenceRecord "1" -- "0..1" Escalation : triggers >
+User "1" -down- "0..*" Escalation : handles >
+RuleEngine .left.> SymptomLog
+RuleEngine ..> Escalation : <<create>>
+@enduml

@@ -1,0 +1,55 @@
+@startuml usecase
+!include _style.iuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam usecase {
+  BackgroundColor #FFFFFF
+  BorderColor #0F4C5C
+  BorderThickness 1.4
+}
+skinparam rectangle {
+  BorderColor #0F4C5C
+  BorderThickness 1.6
+  FontSize 17
+  FontStyle bold
+}
+skinparam actorBorderColor #1F2A30
+skinparam actorBackgroundColor #FFFFFF
+
+actor Patient
+actor Clinician
+actor "Scheduler\n(system timer)" as Sched
+
+rectangle "DisCharge+ System" {
+  usecase "Register" as UC1
+  usecase "View Care Plan\n& Follow-ups" as UC3
+  usecase "Mark Dose Taken" as UC4
+  usecase "Report Symptom" as UC5
+  usecase "Login" as UC2
+  usecase "Create Discharge Plan" as UC9
+  usecase "Manage Escalation\nQueue" as UC11
+  usecase "View Dashboard &\nPatient Details" as UC12
+  usecase "Evaluate Red-Flag\nRules" as UC6
+  usecase "Generate Follow-up &\nDose Schedule" as UC10
+  usecase "Raise Escalation" as UC7
+  usecase "Detect Missed\nDoses" as UC8
+}
+
+Patient -- UC1
+Patient -- UC2
+Patient -- UC3
+Patient -- UC4
+Patient -- UC5
+
+UC2 -- Clinician
+UC9 -- Clinician
+UC11 -- Clinician
+UC12 -- Clinician
+
+UC8 -- Sched
+
+UC5 ..> UC6 : <<include>>
+UC9 ..> UC10 : <<include>>
+UC7 .up.> UC6 : <<extend>>\n[red flag found]
+UC7 .up.> UC8 : <<extend>>\n[critical dose]
+@enduml

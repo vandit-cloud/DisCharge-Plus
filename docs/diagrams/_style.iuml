@@ -1,0 +1,8 @@
+' Shared look for every Phase-1 diagram: plain, standard UML, readable when projected.
+skinparam dpi 200
+skinparam defaultFontName Calibri
+skinparam defaultFontSize 15
+skinparam shadowing false
+skinparam roundCorner 12
+skinparam ArrowColor #1F2A30
+skinparam ArrowThickness 1.3

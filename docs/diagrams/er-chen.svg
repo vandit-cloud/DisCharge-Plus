@@ -1,0 +1,408 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3480" height="3120" viewBox="0 0 3480 3120" font-family="Calibri, Arial, sans-serif"><rect width="3480" height="3120" fill="#FFFFFF"/><rect x="1040.0" y="24" width="1400" height="140" rx="16" fill="#DCEBFA" stroke="#3C74B3" stroke-width="3"/>
+<text x="1740.0" y="78" font-size="60" font-weight="bold" fill="#14304F" text-anchor="middle" dominant-baseline="central">E-R Diagram – DisCharge+</text>
+<text x="1740.0" y="134" font-size="32" fill="#14304F" text-anchor="middle" dominant-baseline="central">(MVP Design · 9 Entities · Chen Notation)</text>
+<line x1="600" y1="470" x2="600" y2="1250" stroke="#39434A" stroke-width="2.2"/>
+<line x1="600" y1="470" x2="1700" y2="470" stroke="#39434A" stroke-width="2.2"/>
+<line x1="600" y1="1250" x2="1700" y2="470" stroke="#39434A" stroke-width="2.2"/>
+<line x1="1700" y1="470" x2="2880" y2="470" stroke="#39434A" stroke-width="2.2"/>
+<line x1="1700" y1="470" x2="1700" y2="1250" stroke="#39434A" stroke-width="2.2"/>
+<line x1="2880" y1="1250" x2="1700" y2="1250" stroke="#39434A" stroke-width="2.2"/>
+<line x1="1700" y1="1250" x2="2880" y2="2030" stroke="#39434A" stroke-width="2.2"/>
+<line x1="600" y1="1250" x2="600" y2="2030" stroke="#39434A" stroke-width="2.2"/>
+<line x1="600" y1="2030" x2="1700" y2="2030" stroke="#39434A" stroke-width="2.2"/>
+<line x1="2880" y1="2030" x2="1700" y2="2030" stroke="#39434A" stroke-width="2.2"/>
+<line x1="600" y1="470" x2="70" y2="470" stroke="#39434A" stroke-width="2.2"/>
+<line x1="70" y1="470" x2="70" y2="2395" stroke="#39434A" stroke-width="2.2"/>
+<line x1="70" y1="2395" x2="1700" y2="2395" stroke="#39434A" stroke-width="2.2"/>
+<line x1="1700" y1="2395" x2="1700" y2="2030" stroke="#39434A" stroke-width="2.2"/>
+<line x1="600" y1="470" x2="270" y2="270" stroke="#C0485A" stroke-width="1.6"/>
+<line x1="600" y1="470" x2="490" y2="225" stroke="#C0485A" stroke-width="1.6"/>
+<line x1="600" y1="470" x2="720" y2="225" stroke="#C0485A" stroke-width="1.6"/>
+<line x1="600" y1="470" x2="950" y2="275" stroke="#C0485A" stroke-width="1.6"/>
+<line x1="600" y1="470" x2="220" y2="375" stroke="#C0485A" stroke-width="1.6"/>
+<line x1="600" y1="470" x2="930" y2="605" stroke="#C0485A" stroke-width="1.6"/>
+<line x1="600" y1="470" x2="300" y2="610" stroke="#C0485A" stroke-width="1.6"/>
+<line x1="600" y1="1250" x2="270" y2="1135" stroke="#3F8F5E" stroke-width="1.6"/>
+<line x1="600" y1="1250" x2="220" y2="1265" stroke="#3F8F5E" stroke-width="1.6"/>
+<line x1="600" y1="1250" x2="260" y2="1400" stroke="#3F8F5E" stroke-width="1.6"/>
+<line x1="600" y1="1250" x2="950" y2="1290" stroke="#3F8F5E" stroke-width="1.6"/>
+<line x1="600" y1="1250" x2="910" y2="1400" stroke="#3F8F5E" stroke-width="1.6"/>
+<line x1="600" y1="1250" x2="470" y2="1450" stroke="#3F8F5E" stroke-width="1.6"/>
+<line x1="1700" y1="470" x2="1200" y2="310" stroke="#6B4FBF" stroke-width="1.6"/>
+<line x1="1700" y1="470" x2="1400" y2="230" stroke="#6B4FBF" stroke-width="1.6"/>
+<line x1="1700" y1="470" x2="1640" y2="310" stroke="#6B4FBF" stroke-width="1.6"/>
+<line x1="1700" y1="470" x2="1790" y2="230" stroke="#6B4FBF" stroke-width="1.6"/>
+<line x1="1700" y1="470" x2="2140" y2="375" stroke="#6B4FBF" stroke-width="1.6"/>
+<line x1="1700" y1="470" x2="2040" y2="235" stroke="#6B4FBF" stroke-width="1.6"/>
+<line x1="1700" y1="470" x2="1260" y2="585" stroke="#6B4FBF" stroke-width="1.6"/>
+<line x1="1700" y1="470" x2="1910" y2="620" stroke="#6B4FBF" stroke-width="1.6"/>
+<line x1="1700" y1="470" x2="2150" y2="575" stroke="#6B4FBF" stroke-width="1.6"/>
+<line x1="2880" y1="470" x2="2560" y2="305" stroke="#C98A1B" stroke-width="1.6"/>
+<line x1="2880" y1="470" x2="2780" y2="230" stroke="#C98A1B" stroke-width="1.6"/>
+<line x1="2880" y1="470" x2="3010" y2="305" stroke="#C98A1B" stroke-width="1.6"/>
+<line x1="2880" y1="470" x2="3310" y2="265" stroke="#C98A1B" stroke-width="1.6"/>
+<line x1="2880" y1="470" x2="3280" y2="430" stroke="#C98A1B" stroke-width="1.6"/>
+<line x1="2880" y1="470" x2="3200" y2="600" stroke="#C98A1B" stroke-width="1.6"/>
+<line x1="2880" y1="470" x2="2940" y2="645" stroke="#C98A1B" stroke-width="1.6"/>
+<line x1="1700" y1="1250" x2="1290" y2="1150" stroke="#3C74B3" stroke-width="1.6"/>
+<line x1="1700" y1="1250" x2="1260" y2="1275" stroke="#3C74B3" stroke-width="1.6"/>
+<line x1="1700" y1="1250" x2="1310" y2="1400" stroke="#3C74B3" stroke-width="1.6"/>
+<line x1="1700" y1="1250" x2="1530" y2="1085" stroke="#3C74B3" stroke-width="1.6"/>
+<line x1="1700" y1="1250" x2="1870" y2="1080" stroke="#3C74B3" stroke-width="1.6"/>
+<line x1="1700" y1="1250" x2="1530" y2="1440" stroke="#3C74B3" stroke-width="1.6"/>
+<line x1="1700" y1="1250" x2="1780" y2="1450" stroke="#3C74B3" stroke-width="1.6"/>
+<line x1="1700" y1="1250" x2="2100" y2="1140" stroke="#3C74B3" stroke-width="1.6"/>
+<line x1="2880" y1="1250" x2="2710" y2="1090" stroke="#2F8C86" stroke-width="1.6"/>
+<line x1="2880" y1="1250" x2="3050" y2="1090" stroke="#2F8C86" stroke-width="1.6"/>
+<line x1="2880" y1="1250" x2="3260" y2="1250" stroke="#2F8C86" stroke-width="1.6"/>
+<line x1="2880" y1="1250" x2="3050" y2="1400" stroke="#2F8C86" stroke-width="1.6"/>
+<line x1="600" y1="2030" x2="250" y2="1920" stroke="#C4642C" stroke-width="1.6"/>
+<line x1="600" y1="2030" x2="200" y2="2060" stroke="#C4642C" stroke-width="1.6"/>
+<line x1="600" y1="2030" x2="310" y2="2195" stroke="#C4642C" stroke-width="1.6"/>
+<line x1="600" y1="2030" x2="580" y2="2230" stroke="#C4642C" stroke-width="1.6"/>
+<line x1="600" y1="2030" x2="820" y2="2200" stroke="#C4642C" stroke-width="1.6"/>
+<line x1="600" y1="2030" x2="890" y2="1905" stroke="#C4642C" stroke-width="1.6"/>
+<line x1="600" y1="2030" x2="980" y2="2120" stroke="#C4642C" stroke-width="1.6"/>
+<line x1="1700" y1="2030" x2="1050" y2="1730" stroke="#B23A6E" stroke-width="1.6"/>
+<line x1="1700" y1="2030" x2="1400" y2="1730" stroke="#B23A6E" stroke-width="1.6"/>
+<line x1="1700" y1="2030" x2="1680" y2="1730" stroke="#B23A6E" stroke-width="1.6"/>
+<line x1="1700" y1="2030" x2="1980" y2="1730" stroke="#B23A6E" stroke-width="1.6"/>
+<line x1="1700" y1="2030" x2="1100" y2="1890" stroke="#B23A6E" stroke-width="1.6"/>
+<line x1="1700" y1="2030" x2="1450" y2="1865" stroke="#B23A6E" stroke-width="1.6"/>
+<line x1="1700" y1="2030" x2="1770" y2="1865" stroke="#B23A6E" stroke-width="1.6"/>
+<line x1="1700" y1="2030" x2="2280" y2="1750" stroke="#B23A6E" stroke-width="1.6"/>
+<line x1="1700" y1="2030" x2="2260" y2="1910" stroke="#B23A6E" stroke-width="1.6"/>
+<line x1="1700" y1="2030" x2="1260" y2="2155" stroke="#B23A6E" stroke-width="1.6"/>
+<line x1="1700" y1="2030" x2="1480" y2="2240" stroke="#B23A6E" stroke-width="1.6"/>
+<line x1="1700" y1="2030" x2="1920" y2="2240" stroke="#B23A6E" stroke-width="1.6"/>
+<line x1="1700" y1="2030" x2="2140" y2="2155" stroke="#B23A6E" stroke-width="1.6"/>
+<line x1="2880" y1="2030" x2="3030" y2="1860" stroke="#6A8A2E" stroke-width="1.6"/>
+<line x1="2880" y1="2030" x2="3280" y2="1975" stroke="#6A8A2E" stroke-width="1.6"/>
+<line x1="2880" y1="2030" x2="3280" y2="2110" stroke="#6A8A2E" stroke-width="1.6"/>
+<line x1="2880" y1="2030" x2="3070" y2="2205" stroke="#6A8A2E" stroke-width="1.6"/>
+<line x1="2880" y1="2030" x2="2750" y2="2205" stroke="#6A8A2E" stroke-width="1.6"/>
+<ellipse cx="270" cy="270" rx="62" ry="44" fill="#FFFFFF" stroke="#C0485A" stroke-width="2"/>
+<text x="270" y="258" font-size="22" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="underline" font-style="normal">userId</text>
+<text x="270" y="284" font-size="20" font-weight="normal" fill="#4A555C" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">(PK)</text>
+<ellipse cx="490" cy="225" rx="69" ry="32" fill="#FFFFFF" stroke="#C0485A" stroke-width="2"/>
+<text x="490" y="225" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">fullName</text>
+<ellipse cx="720" cy="225" rx="69" ry="44" fill="#FFFFFF" stroke="#C0485A" stroke-width="2"/>
+<text x="720" y="213" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">phone</text>
+<text x="720" y="239" font-size="20" font-weight="normal" fill="#4A555C" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">(Unique)</text>
+<ellipse cx="950" cy="275" rx="91" ry="32" fill="#FFFFFF" stroke="#C0485A" stroke-width="2"/>
+<text x="950" y="275" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">passwordHash</text>
+<ellipse cx="220" cy="375" rx="62" ry="32" fill="#FFFFFF" stroke="#C0485A" stroke-width="2"/>
+<text x="220" y="375" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">role</text>
+<ellipse cx="930" cy="605" rx="118" ry="32" fill="#FFFFFF" stroke="#C0485A" stroke-width="2"/>
+<text x="930" y="605" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">preferredLanguage</text>
+<ellipse cx="300" cy="610" rx="69" ry="32" fill="#FFFFFF" stroke="#C0485A" stroke-width="2"/>
+<text x="300" y="610" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">isActive</text>
+<ellipse cx="270" cy="1135" rx="75" ry="44" fill="#FFFFFF" stroke="#3F8F5E" stroke-width="2"/>
+<text x="270" y="1123" font-size="22" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="underline" font-style="normal">patientId</text>
+<text x="270" y="1149" font-size="20" font-weight="normal" fill="#4A555C" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">(PK)</text>
+<ellipse cx="220" cy="1265" rx="62" ry="44" fill="#FFFFFF" stroke="#3F8F5E" stroke-width="2"/>
+<text x="220" y="1253" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="italic">userId</text>
+<text x="220" y="1279" font-size="20" font-weight="normal" fill="#4A555C" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">(FK)</text>
+<ellipse cx="260" cy="1400" rx="69" ry="44" fill="#FFFFFF" stroke="#3F8F5E" stroke-width="2"/>
+<text x="260" y="1388" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">abhaId</text>
+<text x="260" y="1414" font-size="20" font-weight="normal" fill="#4A555C" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">(Unique)</text>
+<ellipse cx="950" cy="1290" rx="85" ry="32" fill="#FFFFFF" stroke="#3F8F5E" stroke-width="2"/>
+<text x="950" y="1290" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">dateOfBirth</text>
+<ellipse cx="910" cy="1400" rx="62" ry="32" fill="#FFFFFF" stroke="#3F8F5E" stroke-width="2"/>
+<text x="910" y="1400" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">gender</text>
+<ellipse cx="470" cy="1450" rx="69" ry="32" fill="#FFFFFF" stroke="#3F8F5E" stroke-width="2"/>
+<text x="470" y="1450" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">district</text>
+<ellipse cx="1200" cy="310" rx="62" ry="44" fill="#FFFFFF" stroke="#6B4FBF" stroke-width="2"/>
+<text x="1200" y="298" font-size="22" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="underline" font-style="normal">planId</text>
+<text x="1200" y="324" font-size="20" font-weight="normal" fill="#4A555C" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">(PK)</text>
+<ellipse cx="1400" cy="230" rx="75" ry="44" fill="#FFFFFF" stroke="#6B4FBF" stroke-width="2"/>
+<text x="1400" y="218" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="italic">patientId</text>
+<text x="1400" y="244" font-size="20" font-weight="normal" fill="#4A555C" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">(FK)</text>
+<ellipse cx="1640" cy="310" rx="85" ry="44" fill="#FFFFFF" stroke="#6B4FBF" stroke-width="2"/>
+<text x="1640" y="298" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="italic">clinicianId</text>
+<text x="1640" y="324" font-size="20" font-weight="normal" fill="#4A555C" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">(FK)</text>
+<ellipse cx="1790" cy="230" rx="96" ry="32" fill="#FFFFFF" stroke="#6B4FBF" stroke-width="2"/>
+<text x="1790" y="230" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">admissionDate</text>
+<ellipse cx="2140" cy="375" rx="96" ry="32" fill="#FFFFFF" stroke="#6B4FBF" stroke-width="2"/>
+<text x="2140" y="375" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">dischargeDate</text>
+<ellipse cx="2040" cy="235" rx="112" ry="32" fill="#FFFFFF" stroke="#6B4FBF" stroke-width="2"/>
+<text x="2040" y="235" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">primaryDiagnosis</text>
+<ellipse cx="1260" cy="585" rx="69" ry="32" fill="#FFFFFF" stroke="#6B4FBF" stroke-width="2"/>
+<text x="1260" y="585" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">redFlags</text>
+<ellipse cx="1910" cy="620" rx="112" ry="32" fill="#FFFFFF" stroke="#6B4FBF" stroke-width="2"/>
+<text x="1910" y="620" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">followUpProtocol</text>
+<ellipse cx="2150" cy="575" rx="62" ry="32" fill="#FFFFFF" stroke="#6B4FBF" stroke-width="2"/>
+<text x="2150" y="575" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">status</text>
+<ellipse cx="2560" cy="305" rx="80" ry="44" fill="#FFFFFF" stroke="#C98A1B" stroke-width="2"/>
+<text x="2560" y="293" font-size="22" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="underline" font-style="normal">followUpId</text>
+<text x="2560" y="319" font-size="20" font-weight="normal" fill="#4A555C" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">(PK)</text>
+<ellipse cx="2780" cy="230" rx="62" ry="44" fill="#FFFFFF" stroke="#C98A1B" stroke-width="2"/>
+<text x="2780" y="218" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="italic">planId</text>
+<text x="2780" y="244" font-size="20" font-weight="normal" fill="#4A555C" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">(FK)</text>
+<ellipse cx="3010" cy="305" rx="96" ry="32" fill="#FFFFFF" stroke="#C98A1B" stroke-width="2"/>
+<text x="3010" y="305" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">scheduledDate</text>
+<ellipse cx="3310" cy="265" rx="62" ry="32" fill="#FFFFFF" stroke="#C98A1B" stroke-width="2"/>
+<text x="3310" y="265" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">type</text>
+<ellipse cx="3280" cy="430" rx="85" ry="32" fill="#FFFFFF" stroke="#C98A1B" stroke-width="2"/>
+<text x="3280" y="430" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">description</text>
+<ellipse cx="3200" cy="600" rx="62" ry="32" fill="#FFFFFF" stroke="#C98A1B" stroke-width="2"/>
+<text x="3200" y="600" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">status</text>
+<ellipse cx="2940" cy="645" rx="96" ry="32" fill="#FFFFFF" stroke="#C98A1B" stroke-width="2"/>
+<text x="2940" y="645" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">completedDate</text>
+<ellipse cx="1290" cy="1150" rx="101" ry="44" fill="#FFFFFF" stroke="#3C74B3" stroke-width="2"/>
+<text x="1290" y="1138" font-size="22" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="underline" font-style="normal">prescriptionId</text>
+<text x="1290" y="1164" font-size="20" font-weight="normal" fill="#4A555C" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">(PK)</text>
+<ellipse cx="1260" cy="1275" rx="62" ry="44" fill="#FFFFFF" stroke="#3C74B3" stroke-width="2"/>
+<text x="1260" y="1263" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="italic">planId</text>
+<text x="1260" y="1289" font-size="20" font-weight="normal" fill="#4A555C" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">(FK)</text>
+<ellipse cx="1310" cy="1400" rx="91" ry="44" fill="#FFFFFF" stroke="#3C74B3" stroke-width="2"/>
+<text x="1310" y="1388" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="italic">medicationId</text>
+<text x="1310" y="1414" font-size="20" font-weight="normal" fill="#4A555C" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">(FK)</text>
+<ellipse cx="1530" cy="1085" rx="62" ry="32" fill="#FFFFFF" stroke="#3C74B3" stroke-width="2"/>
+<text x="1530" y="1085" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">dosage</text>
+<ellipse cx="1870" cy="1080" rx="75" ry="32" fill="#FFFFFF" stroke="#3C74B3" stroke-width="2"/>
+<text x="1870" y="1080" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">frequency</text>
+<ellipse cx="1530" cy="1440" rx="85" ry="32" fill="#FFFFFF" stroke="#3C74B3" stroke-width="2"/>
+<text x="1530" y="1440" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">timingSlots</text>
+<ellipse cx="1780" cy="1450" rx="91" ry="32" fill="#FFFFFF" stroke="#3C74B3" stroke-width="2"/>
+<text x="1780" y="1450" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">durationDays</text>
+<ellipse cx="2100" cy="1140" rx="80" ry="32" fill="#FFFFFF" stroke="#3C74B3" stroke-width="2"/>
+<text x="2100" y="1140" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">isCritical</text>
+<ellipse cx="2710" cy="1090" rx="91" ry="44" fill="#FFFFFF" stroke="#2F8C86" stroke-width="2"/>
+<text x="2710" y="1078" font-size="22" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="underline" font-style="normal">medicationId</text>
+<text x="2710" y="1104" font-size="20" font-weight="normal" fill="#4A555C" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">(PK)</text>
+<ellipse cx="3050" cy="1090" rx="85" ry="44" fill="#FFFFFF" stroke="#2F8C86" stroke-width="2"/>
+<text x="3050" y="1078" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">genericName</text>
+<text x="3050" y="1104" font-size="20" font-weight="normal" fill="#4A555C" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">(Unique)</text>
+<ellipse cx="3260" cy="1250" rx="62" ry="32" fill="#FFFFFF" stroke="#2F8C86" stroke-width="2"/>
+<text x="3260" y="1250" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">form</text>
+<ellipse cx="3050" cy="1400" rx="69" ry="32" fill="#FFFFFF" stroke="#2F8C86" stroke-width="2"/>
+<text x="3050" y="1400" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">strength</text>
+<ellipse cx="250" cy="1920" rx="91" ry="44" fill="#FFFFFF" stroke="#C4642C" stroke-width="2"/>
+<text x="250" y="1908" font-size="22" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="underline" font-style="normal">symptomLogId</text>
+<text x="250" y="1934" font-size="20" font-weight="normal" fill="#4A555C" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">(PK)</text>
+<ellipse cx="200" cy="2060" rx="75" ry="44" fill="#FFFFFF" stroke="#C4642C" stroke-width="2"/>
+<text x="200" y="2048" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="italic">patientId</text>
+<text x="200" y="2074" font-size="20" font-weight="normal" fill="#4A555C" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">(FK)</text>
+<ellipse cx="310" cy="2195" rx="80" ry="32" fill="#FFFFFF" stroke="#C4642C" stroke-width="2"/>
+<text x="310" y="2195" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">reportedAt</text>
+<ellipse cx="580" cy="2230" rx="69" ry="32" fill="#FFFFFF" stroke="#C4642C" stroke-width="2"/>
+<text x="580" y="2230" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">symptoms</text>
+<ellipse cx="820" cy="2200" rx="69" ry="32" fill="#FFFFFF" stroke="#C4642C" stroke-width="2"/>
+<text x="820" y="2200" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">severity</text>
+<ellipse cx="890" cy="1905" rx="80" ry="32" fill="#FFFFFF" stroke="#C4642C" stroke-width="2"/>
+<text x="890" y="1905" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">triageTier</text>
+<ellipse cx="980" cy="2120" rx="101" ry="32" fill="#FFFFFF" stroke="#C4642C" stroke-width="2"/>
+<text x="980" y="2120" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">triggeredRules</text>
+<ellipse cx="1050" cy="1730" rx="91" ry="44" fill="#FFFFFF" stroke="#B23A6E" stroke-width="2"/>
+<text x="1050" y="1718" font-size="22" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="underline" font-style="normal">escalationId</text>
+<text x="1050" y="1744" font-size="20" font-weight="normal" fill="#4A555C" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">(PK)</text>
+<ellipse cx="1400" cy="1730" rx="75" ry="44" fill="#FFFFFF" stroke="#B23A6E" stroke-width="2"/>
+<text x="1400" y="1718" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="italic">patientId</text>
+<text x="1400" y="1744" font-size="20" font-weight="normal" fill="#4A555C" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">(FK)</text>
+<ellipse cx="1680" cy="1730" rx="91" ry="44" fill="#FFFFFF" stroke="#B23A6E" stroke-width="2"/>
+<text x="1680" y="1718" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="italic">symptomLogId</text>
+<text x="1680" y="1744" font-size="20" font-weight="normal" fill="#4A555C" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">(FK)</text>
+<ellipse cx="1980" cy="1730" rx="85" ry="44" fill="#FFFFFF" stroke="#B23A6E" stroke-width="2"/>
+<text x="1980" y="1718" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="italic">adherenceId</text>
+<text x="1980" y="1744" font-size="20" font-weight="normal" fill="#4A555C" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">(FK)</text>
+<ellipse cx="1100" cy="1890" rx="128" ry="44" fill="#FFFFFF" stroke="#B23A6E" stroke-width="2"/>
+<text x="1100" y="1878" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="italic">assignedClinicianId</text>
+<text x="1100" y="1904" font-size="20" font-weight="normal" fill="#4A555C" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">(FK)</text>
+<ellipse cx="1450" cy="1865" rx="62" ry="32" fill="#FFFFFF" stroke="#B23A6E" stroke-width="2"/>
+<text x="1450" y="1865" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">source</text>
+<ellipse cx="1770" cy="1865" rx="62" ry="32" fill="#FFFFFF" stroke="#B23A6E" stroke-width="2"/>
+<text x="1770" y="1865" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">tier</text>
+<ellipse cx="2280" cy="1750" rx="101" ry="32" fill="#FFFFFF" stroke="#B23A6E" stroke-width="2"/>
+<text x="2280" y="1750" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">triggeredRules</text>
+<ellipse cx="2260" cy="1910" rx="62" ry="32" fill="#FFFFFF" stroke="#B23A6E" stroke-width="2"/>
+<text x="2260" y="1910" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">status</text>
+<ellipse cx="1260" cy="2155" rx="75" ry="32" fill="#FFFFFF" stroke="#B23A6E" stroke-width="2"/>
+<text x="1260" y="2155" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">createdAt</text>
+<ellipse cx="1480" cy="2240" rx="101" ry="32" fill="#FFFFFF" stroke="#B23A6E" stroke-width="2"/>
+<text x="1480" y="2240" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">acknowledgedAt</text>
+<ellipse cx="1920" cy="2240" rx="80" ry="32" fill="#FFFFFF" stroke="#B23A6E" stroke-width="2"/>
+<text x="1920" y="2240" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">resolvedAt</text>
+<ellipse cx="2140" cy="2155" rx="62" ry="32" fill="#FFFFFF" stroke="#B23A6E" stroke-width="2"/>
+<text x="2140" y="2155" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">notes</text>
+<ellipse cx="3030" cy="1860" rx="85" ry="44" fill="#FFFFFF" stroke="#6A8A2E" stroke-width="2"/>
+<text x="3030" y="1848" font-size="22" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="underline" font-style="normal">adherenceId</text>
+<text x="3030" y="1874" font-size="20" font-weight="normal" fill="#4A555C" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">(PK)</text>
+<ellipse cx="3280" cy="1975" rx="101" ry="44" fill="#FFFFFF" stroke="#6A8A2E" stroke-width="2"/>
+<text x="3280" y="1963" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="italic">prescriptionId</text>
+<text x="3280" y="1989" font-size="20" font-weight="normal" fill="#4A555C" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">(FK)</text>
+<ellipse cx="3280" cy="2110" rx="85" ry="32" fill="#FFFFFF" stroke="#6A8A2E" stroke-width="2"/>
+<text x="3280" y="2110" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">scheduledAt</text>
+<ellipse cx="3070" cy="2205" rx="62" ry="32" fill="#FFFFFF" stroke="#6A8A2E" stroke-width="2"/>
+<text x="3070" y="2205" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">status</text>
+<ellipse cx="2750" cy="2205" rx="80" ry="32" fill="#FFFFFF" stroke="#6A8A2E" stroke-width="2"/>
+<text x="2750" y="2205" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">recordedAt</text>
+<polygon points="600.0,804.0 718.0,860.0 600.0,916.0 482.0,860.0" fill="#EEE6FB" stroke="#6B4FBF" stroke-width="2.2"/>
+<text x="600" y="860" font-size="22" font-weight="bold" fill="#3A2A73" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">has</text>
+<text x="624" y="543" font-size="24" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">1</text>
+<text x="624" y="1177" font-size="24" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">0..1</text>
+<polygon points="1150.0,414.0 1268.0,470.0 1150.0,526.0 1032.0,470.0" fill="#EEE6FB" stroke="#6B4FBF" stroke-width="2.2"/>
+<text x="1150" y="470" font-size="22" font-weight="bold" fill="#3A2A73" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">authors</text>
+<text x="799" y="446" font-size="24" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">1</text>
+<text x="1501" y="446" font-size="24" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">0..N</text>
+<polygon points="1150.0,804.0 1268.0,860.0 1150.0,916.0 1032.0,860.0" fill="#EEE6FB" stroke="#6B4FBF" stroke-width="2.2"/>
+<text x="1150" y="860" font-size="22" font-weight="bold" fill="#3A2A73" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">receives</text>
+<text x="669" y="1172" font-size="24" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">1</text>
+<text x="1579" y="526" font-size="24" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">0..N</text>
+<polygon points="2290.0,414.0 2408.0,470.0 2290.0,526.0 2172.0,470.0" fill="#EEE6FB" stroke="#6B4FBF" stroke-width="2.2"/>
+<text x="2290" y="470" font-size="22" font-weight="bold" fill="#3A2A73" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">schedules</text>
+<text x="1899" y="446" font-size="24" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">1</text>
+<text x="2681" y="446" font-size="24" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">0..N</text>
+<polygon points="1700.0,804.0 1818.0,860.0 1700.0,916.0 1582.0,860.0" fill="#EEE6FB" stroke="#6B4FBF" stroke-width="2.2"/>
+<text x="1700" y="860" font-size="22" font-weight="bold" fill="#3A2A73" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">contains</text>
+<text x="1724" y="543" font-size="24" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">1</text>
+<text x="1724" y="1177" font-size="24" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">1..N</text>
+<polygon points="2290.0,1194.0 2408.0,1250.0 2290.0,1306.0 2172.0,1250.0" fill="#EEE6FB" stroke="#6B4FBF" stroke-width="2.2"/>
+<text x="2290" y="1250" font-size="22" font-weight="bold" fill="#3A2A73" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">prescribed in</text>
+<text x="2681" y="1226" font-size="24" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">1</text>
+<text x="1899" y="1226" font-size="24" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">0..N</text>
+<polygon points="2290.0,1584.0 2408.0,1640.0 2290.0,1696.0 2172.0,1640.0" fill="#EEE6FB" stroke="#6B4FBF" stroke-width="2.2"/>
+<text x="2290" y="1640" font-size="22" font-weight="bold" fill="#3A2A73" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">generates</text>
+<text x="1831" y="1308" font-size="24" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">1</text>
+<text x="2806" y="1952" font-size="24" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">0..N</text>
+<polygon points="600.0,1584.0 718.0,1640.0 600.0,1696.0 482.0,1640.0" fill="#EEE6FB" stroke="#6B4FBF" stroke-width="2.2"/>
+<text x="600" y="1640" font-size="22" font-weight="bold" fill="#3A2A73" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">reports</text>
+<text x="624" y="1323" font-size="24" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">1</text>
+<text x="624" y="1957" font-size="24" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">0..N</text>
+<polygon points="1150.0,1974.0 1268.0,2030.0 1150.0,2086.0 1032.0,2030.0" fill="#EEE6FB" stroke="#6B4FBF" stroke-width="2.2"/>
+<text x="1150" y="2030" font-size="22" font-weight="bold" fill="#3A2A73" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">triggers</text>
+<text x="799" y="2006" font-size="24" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">0..1</text>
+<text x="1501" y="2006" font-size="24" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">0..1</text>
+<polygon points="2290.0,1974.0 2408.0,2030.0 2290.0,2086.0 2172.0,2030.0" fill="#EEE6FB" stroke="#6B4FBF" stroke-width="2.2"/>
+<text x="2290" y="2030" font-size="22" font-weight="bold" fill="#3A2A73" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">triggers</text>
+<text x="2681" y="2006" font-size="24" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">0..1</text>
+<text x="1899" y="2006" font-size="24" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">0..1</text>
+<polygon points="1150,2339 1268,2395 1150,2451 1032,2395" fill="#EEE6FB" stroke="#6B4FBF" stroke-width="2.2"/>
+<text x="1150" y="2395" font-size="22" font-weight="bold" fill="#3A2A73" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">handles</text>
+<text x="401" y="446" font-size="24" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">1</text>
+<text x="1726" y="2109" font-size="24" font-weight="bold" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">0..N</text>
+<rect x="435.0" y="431.0" width="330" height="78" fill="#FBE0E3" stroke="#C0485A" stroke-width="3"/>
+<text x="600" y="470" font-size="30" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">USER</text>
+<rect x="435.0" y="1211.0" width="330" height="78" fill="#DDF1E4" stroke="#3F8F5E" stroke-width="3"/>
+<text x="600" y="1250" font-size="30" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">PATIENT</text>
+<rect x="1535.0" y="431.0" width="330" height="78" fill="#E6DEFA" stroke="#6B4FBF" stroke-width="3"/>
+<text x="1700" y="470" font-size="30" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">DISCHARGE_PLAN</text>
+<rect x="2715.0" y="431.0" width="330" height="78" fill="#FFF1D6" stroke="#C98A1B" stroke-width="3"/>
+<text x="2880" y="470" font-size="30" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">FOLLOW_UP</text>
+<rect x="1535.0" y="1211.0" width="330" height="78" fill="#DCEBFA" stroke="#3C74B3" stroke-width="3"/>
+<polygon points="1700,1216.0 1857.0,1250 1700,1284.0 1543.0,1250" fill="none" stroke="#3C74B3" stroke-width="1.8"/>
+<text x="1700" y="1250" font-size="30" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">PRESCRIPTION</text>
+<rect x="2715.0" y="1211.0" width="330" height="78" fill="#DAF3F1" stroke="#2F8C86" stroke-width="3"/>
+<text x="2880" y="1250" font-size="30" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">MEDICATION</text>
+<rect x="435.0" y="1991.0" width="330" height="78" fill="#FDE6D8" stroke="#C4642C" stroke-width="3"/>
+<text x="600" y="2030" font-size="30" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">SYMPTOM_LOG</text>
+<rect x="1535.0" y="1991.0" width="330" height="78" fill="#FADCE8" stroke="#B23A6E" stroke-width="3"/>
+<text x="1700" y="2030" font-size="30" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">ESCALATION</text>
+<rect x="2715.0" y="1991.0" width="330" height="78" fill="#E4ECD7" stroke="#6A8A2E" stroke-width="3"/>
+<text x="2880" y="2030" font-size="27" font-weight="bold" fill="#1F2A30" text-anchor="middle" dominant-baseline="central" text-decoration="" font-style="normal">ADHERENCE_RECORD</text>
+<rect x="30" y="2480" width="360" height="610" rx="14" fill="#F7FAFD" stroke="#3C74B3" stroke-width="2"/>
+<text x="60" y="2520" font-size="32" font-weight="bold" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">Legend</text>
+<rect x="60" y="2560" width="90" height="40" fill="#DCEBFA" stroke="#3C74B3" stroke-width="2.5"/>
+<text x="170" y="2580" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">= Entity</text>
+<rect x="60" y="2624" width="90" height="40" fill="#DCEBFA" stroke="#3C74B3" stroke-width="2.5"/><polygon points="105,2628 144,2644 105,2660 66,2644" fill="none" stroke="#3C74B3" stroke-width="1.6"/>
+<text x="170" y="2644" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">= Associative entity</text>
+<ellipse cx="105" cy="2708" rx="45" ry="20" fill="#fff" stroke="#39434A" stroke-width="2"/>
+<text x="170" y="2708" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">= Attribute</text>
+<polygon points="105,2748 150,2772 105,2796 60,2772" fill="#EEE6FB" stroke="#6B4FBF" stroke-width="2"/>
+<text x="170" y="2772" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">= Relationship</text>
+<line x1="60" y1="2832" x2="150" y2="2832" stroke="#39434A" stroke-width="2.5"/>
+<text x="170" y="2832" font-size="22" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">= Link</text>
+<text x="60" y="2880" font-size="21" font-weight="bold" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">PK</text>
+<text x="165" y="2880" font-size="20" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">Primary key (underlined)</text>
+<text x="60" y="2928" font-size="21" font-weight="bold" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">FK</text>
+<text x="165" y="2928" font-size="20" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">Foreign key (italic)</text>
+<text x="60" y="2976" font-size="21" font-weight="bold" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">1, 0..1</text>
+<text x="165" y="2976" font-size="20" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">Cardinality (min..max)</text>
+<text x="60" y="3024" font-size="21" font-weight="bold" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">0..N, 1..N</text>
+<text x="165" y="3024" font-size="20" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">N = many</text>
+<rect x="410" y="2480" width="3040" height="610" rx="14" fill="#FBFCFE" stroke="#3C74B3" stroke-width="2"/>
+<text x="440" y="2520" font-size="32" font-weight="bold" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">Entities and Attributes (Full Details)</text>
+<rect x="425" y="2560" width="322" height="510" rx="8" fill="#FFFFFF" stroke="#C0485A" stroke-width="2"/><rect x="425" y="2560" width="322" height="46" rx="8" fill="#FBE0E3" stroke="#C0485A" stroke-width="2"/>
+<text x="437" y="2583" font-size="21" font-weight="bold" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">USER</text>
+<text x="437" y="2632" font-size="19" font-weight="bold" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• userId (PK)</text>
+<text x="437" y="2663" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• fullName</text>
+<text x="437" y="2694" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• phone (U)</text>
+<text x="437" y="2725" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• passwordHash</text>
+<text x="437" y="2756" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• role</text>
+<text x="437" y="2787" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• preferredLanguage</text>
+<text x="437" y="2818" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• isActive</text>
+<rect x="761" y="2560" width="322" height="510" rx="8" fill="#FFFFFF" stroke="#3F8F5E" stroke-width="2"/><rect x="761" y="2560" width="322" height="46" rx="8" fill="#DDF1E4" stroke="#3F8F5E" stroke-width="2"/>
+<text x="773" y="2583" font-size="21" font-weight="bold" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">PATIENT</text>
+<text x="773" y="2632" font-size="19" font-weight="bold" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• patientId (PK)</text>
+<text x="773" y="2663" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="italic">• userId (FK)</text>
+<text x="773" y="2694" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• abhaId (U)</text>
+<text x="773" y="2725" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• dateOfBirth</text>
+<text x="773" y="2756" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• gender</text>
+<text x="773" y="2787" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• district</text>
+<rect x="1097" y="2560" width="322" height="510" rx="8" fill="#FFFFFF" stroke="#6B4FBF" stroke-width="2"/><rect x="1097" y="2560" width="322" height="46" rx="8" fill="#E6DEFA" stroke="#6B4FBF" stroke-width="2"/>
+<text x="1109" y="2583" font-size="21" font-weight="bold" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">DISCHARGE_PLAN</text>
+<text x="1109" y="2632" font-size="19" font-weight="bold" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• planId (PK)</text>
+<text x="1109" y="2663" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="italic">• patientId (FK)</text>
+<text x="1109" y="2694" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="italic">• clinicianId (FK)</text>
+<text x="1109" y="2725" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• admissionDate</text>
+<text x="1109" y="2756" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• dischargeDate</text>
+<text x="1109" y="2787" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• primaryDiagnosis</text>
+<text x="1109" y="2818" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• redFlags</text>
+<text x="1109" y="2849" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• followUpProtocol</text>
+<text x="1109" y="2880" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• status</text>
+<rect x="1433" y="2560" width="322" height="510" rx="8" fill="#FFFFFF" stroke="#3C74B3" stroke-width="2"/><rect x="1433" y="2560" width="322" height="46" rx="8" fill="#DCEBFA" stroke="#3C74B3" stroke-width="2"/>
+<text x="1445" y="2583" font-size="21" font-weight="bold" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">PRESCRIPTION</text>
+<text x="1445" y="2632" font-size="19" font-weight="bold" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• prescriptionId (PK)</text>
+<text x="1445" y="2663" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="italic">• planId (FK)</text>
+<text x="1445" y="2694" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="italic">• medicationId (FK)</text>
+<text x="1445" y="2725" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• dosage</text>
+<text x="1445" y="2756" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• frequency</text>
+<text x="1445" y="2787" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• timingSlots</text>
+<text x="1445" y="2818" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• durationDays</text>
+<text x="1445" y="2849" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• isCritical</text>
+<rect x="1769" y="2560" width="322" height="510" rx="8" fill="#FFFFFF" stroke="#2F8C86" stroke-width="2"/><rect x="1769" y="2560" width="322" height="46" rx="8" fill="#DAF3F1" stroke="#2F8C86" stroke-width="2"/>
+<text x="1781" y="2583" font-size="21" font-weight="bold" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">MEDICATION</text>
+<text x="1781" y="2632" font-size="19" font-weight="bold" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• medicationId (PK)</text>
+<text x="1781" y="2663" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• genericName (U)</text>
+<text x="1781" y="2694" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• form</text>
+<text x="1781" y="2725" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• strength</text>
+<rect x="2105" y="2560" width="322" height="510" rx="8" fill="#FFFFFF" stroke="#C98A1B" stroke-width="2"/><rect x="2105" y="2560" width="322" height="46" rx="8" fill="#FFF1D6" stroke="#C98A1B" stroke-width="2"/>
+<text x="2117" y="2583" font-size="21" font-weight="bold" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">FOLLOW_UP</text>
+<text x="2117" y="2632" font-size="19" font-weight="bold" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• followUpId (PK)</text>
+<text x="2117" y="2663" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="italic">• planId (FK)</text>
+<text x="2117" y="2694" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• scheduledDate</text>
+<text x="2117" y="2725" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• type</text>
+<text x="2117" y="2756" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• description</text>
+<text x="2117" y="2787" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• status</text>
+<text x="2117" y="2818" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• completedDate</text>
+<rect x="2441" y="2560" width="322" height="510" rx="8" fill="#FFFFFF" stroke="#6A8A2E" stroke-width="2"/><rect x="2441" y="2560" width="322" height="46" rx="8" fill="#E4ECD7" stroke="#6A8A2E" stroke-width="2"/>
+<text x="2453" y="2583" font-size="18" font-weight="bold" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">ADHERENCE_RECORD</text>
+<text x="2453" y="2632" font-size="19" font-weight="bold" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• adherenceId (PK)</text>
+<text x="2453" y="2663" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="italic">• prescriptionId (FK)</text>
+<text x="2453" y="2694" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• scheduledAt</text>
+<text x="2453" y="2725" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• status</text>
+<text x="2453" y="2756" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• recordedAt</text>
+<rect x="2777" y="2560" width="322" height="510" rx="8" fill="#FFFFFF" stroke="#C4642C" stroke-width="2"/><rect x="2777" y="2560" width="322" height="46" rx="8" fill="#FDE6D8" stroke="#C4642C" stroke-width="2"/>
+<text x="2789" y="2583" font-size="21" font-weight="bold" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">SYMPTOM_LOG</text>
+<text x="2789" y="2632" font-size="19" font-weight="bold" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• symptomLogId (PK)</text>
+<text x="2789" y="2663" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="italic">• patientId (FK)</text>
+<text x="2789" y="2694" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• reportedAt</text>
+<text x="2789" y="2725" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• symptoms</text>
+<text x="2789" y="2756" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• severity</text>
+<text x="2789" y="2787" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• triageTier</text>
+<text x="2789" y="2818" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• triggeredRules</text>
+<rect x="3113" y="2560" width="322" height="510" rx="8" fill="#FFFFFF" stroke="#B23A6E" stroke-width="2"/><rect x="3113" y="2560" width="322" height="46" rx="8" fill="#FADCE8" stroke="#B23A6E" stroke-width="2"/>
+<text x="3125" y="2583" font-size="21" font-weight="bold" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">ESCALATION</text>
+<text x="3125" y="2632" font-size="19" font-weight="bold" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• escalationId (PK)</text>
+<text x="3125" y="2663" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="italic">• patientId (FK)</text>
+<text x="3125" y="2694" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="italic">• symptomLogId (FK)</text>
+<text x="3125" y="2725" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="italic">• adherenceId (FK)</text>
+<text x="3125" y="2756" font-size="17" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="italic">• assignedClinicianId (FK)</text>
+<text x="3125" y="2787" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• source</text>
+<text x="3125" y="2818" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• tier</text>
+<text x="3125" y="2849" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• triggeredRules</text>
+<text x="3125" y="2880" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• status</text>
+<text x="3125" y="2911" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• createdAt</text>
+<text x="3125" y="2942" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• acknowledgedAt</text>
+<text x="3125" y="2973" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• resolvedAt</text>
+<text x="3125" y="3004" font-size="19" font-weight="normal" fill="#1F2A30" text-anchor="start" dominant-baseline="central" text-decoration="" font-style="normal">• notes</text></svg>

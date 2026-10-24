@@ -1,0 +1,69 @@
+@startuml architecture
+!include _style.iuml
+skinparam defaultFontSize 19
+skinparam componentStyle rectangle
+skinparam component {
+  BackgroundColor #FFFFFF
+  BorderColor #0F4C5C
+  BorderThickness 1.3
+}
+skinparam node {
+  BackgroundColor #F4F7F7
+  BorderColor #0F4C5C
+  BorderThickness 1.6
+  FontStyle bold
+  FontSize 16
+}
+skinparam database {
+  BackgroundColor #E3F0EF
+  BorderColor #0F4C5C
+}
+skinparam actorBorderColor #1F2A30
+skinparam actorBackgroundColor #FFFFFF
+skinparam nodesep 35
+skinparam ranksep 40
+left to right direction
+title DisCharge+ System Architecture (MVP, 3-tier client-server)
+
+actor Patient
+actor Clinician
+
+node "Presentation Tier: React + Vite + Tailwind (Vercel)" as FE {
+  component "Patient Pages\n(en / hi / gu)" as PP
+  component "Clinician Dashboard\n& Escalation Queue" as CP
+  component "API Client\n(JWT in header)" as AC
+}
+
+node "Application Tier: Node.js + Express (Render)" as BE {
+  component "Middleware\nJWT auth · role + ownership · validation" as MW
+  component "Auth &\nUser Service" as S1
+  component "Discharge Plan &\nFollow-up Service" as S2
+  component "Adherence\nService" as S3
+  component "Symptom Service +\nRed-Flag Rule Engine" as S4
+  component "Escalation &\nDashboard Service\n(rule-based risk band)" as S5
+  component "node-cron job\nmissed-dose sweep" as CRON
+}
+
+node "Data Tier: MongoDB Atlas" as DT {
+  database "MongoDB\n9 collections\n(Mongoose ODM)" as DB
+}
+
+Patient --> PP
+Clinician --> CP
+PP --> AC
+CP --> AC
+AC --> MW : HTTPS / REST (JSON)
+MW --> S1
+MW --> S2
+MW --> S3
+MW --> S4
+MW --> S5
+CRON --> S3
+S3 --> S5 : missed critical dose
+S4 --> S5 : red flag
+S1 --> DB
+S2 --> DB
+S3 --> DB
+S4 --> DB
+S5 --> DB
+@enduml

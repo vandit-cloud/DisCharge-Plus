@@ -1,0 +1,63 @@
+@startuml sequence
+!include _style.iuml
+skinparam defaultFontSize 17
+skinparam DatabaseBackgroundColor #E3F0EF
+skinparam DatabaseBorderColor #0F4C5C
+skinparam sequence {
+  LifeLineBorderColor #7A8A90
+  ParticipantBorderColor #0F4C5C
+  ParticipantBackgroundColor #E3F0EF
+  ActorBorderColor #1F2A30
+  ActorBackgroundColor #FFFFFF
+  DatabaseBorderColor #0F4C5C
+  DatabaseBackgroundColor #E3F0EF
+  GroupBorderColor #7A8A90
+  GroupBackgroundColor #F4F7F7
+}
+skinparam responseMessageBelowArrow true
+autonumber
+hide footbox
+title Use case: Report Symptom → Escalation
+
+actor Patient
+participant "DisCharge+\nWeb App" as App
+participant ":SymptomLog" as Log
+participant ":RuleEngine" as RE
+participant ":Escalation" as Esc
+database "MongoDB" as DB
+
+Patient -> App : submit symptoms + severity
+activate App
+App -> App : validate input
+create Log
+App -> Log : new SymptomLog(symptoms)
+App -> Log : save()
+activate Log
+Log -> DB : insert SymptomLog
+DB --> Log : symptomLogId
+Log --> App : saved
+deactivate Log
+App -> DB : find active DischargePlan
+DB --> App : plan (redFlags, protocol)
+App -> RE : evaluate(log, plan)
+activate RE
+RE -> RE : match rules, pick highest tier
+RE -> Log : setTriage(tier, rules)
+RE --> App : tier, triggeredRules
+deactivate RE
+
+alt tier = self_care
+  App --> Patient : show self-care advice
+else tier = teleconsult / urgent / emergency
+  create Esc
+  App -> Esc : new Escalation(source, tier, rules)
+  App -> Esc : save()
+  activate Esc
+  Esc -> DB : insert Escalation (status = open)
+  DB --> Esc : escalationId
+  Esc --> App : created
+  deactivate Esc
+  App --> Patient : "Clinician alerted" + urgent advice
+  deactivate App
+end
+@enduml

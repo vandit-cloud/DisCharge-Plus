@@ -1,0 +1,125 @@
+@startuml er
+!include _style.iuml
+hide circle
+left to right direction
+hide methods
+hide stereotypes
+skinparam roundCorner 0
+skinparam linetype polyline
+skinparam defaultFontSize 14
+skinparam class {
+  BackgroundColor #FFFFFF
+  HeaderBackgroundColor #FBE3DC
+  BorderColor #8C2F1B
+  BorderThickness 1.3
+  FontStyle bold
+}
+skinparam nodesep 45
+skinparam ranksep 60
+
+entity "USER" as User {
+  <b>userId (PK)</b>
+  --
+  fullName
+  phone
+  passwordHash
+  role
+  preferredLanguage
+  isActive
+}
+entity "PATIENT" as Patient {
+  <b>patientId (PK)</b>
+  --
+  <i>userId (FK)</i>
+  abhaId
+  dateOfBirth
+  gender
+  district
+}
+entity "DISCHARGE_PLAN" as Plan {
+  <b>planId (PK)</b>
+  --
+  <i>patientId (FK)</i>
+  <i>clinicianId (FK)</i>
+  admissionDate
+  dischargeDate
+  primaryDiagnosis
+  redFlags
+  followUpProtocol
+  status
+}
+entity "MEDICATION" as Med {
+  <b>medicationId (PK)</b>
+  --
+  genericName
+  form
+  strength
+}
+entity "PRESCRIPTION\n(associative entity)" as Rx {
+  <b>prescriptionId (PK)</b>
+  --
+  <i>planId (FK)</i>
+  <i>medicationId (FK)</i>
+  dosage
+  frequency
+  timingSlots
+  durationDays
+  isCritical
+}
+entity "FOLLOW_UP" as FU {
+  <b>followUpId (PK)</b>
+  --
+  <i>planId (FK)</i>
+  scheduledDate
+  type
+  description
+  status
+  completedDate
+}
+entity "ADHERENCE_RECORD" as AR {
+  <b>adherenceId (PK)</b>
+  --
+  <i>prescriptionId (FK)</i>
+  scheduledAt
+  status
+  recordedAt
+}
+entity "SYMPTOM_LOG" as SL {
+  <b>symptomLogId (PK)</b>
+  --
+  <i>patientId (FK)</i>
+  reportedAt
+  symptoms
+  severity
+  triageTier
+  triggeredRules
+}
+entity "ESCALATION" as Esc {
+  <b>escalationId (PK)</b>
+  --
+  <i>patientId (FK)</i>
+  <i>symptomLogId (FK)</i>
+  <i>adherenceId (FK)</i>
+  <i>assignedClinicianId (FK)</i>
+  source
+  tier
+  triggeredRules
+  status
+  createdAt
+  acknowledgedAt
+  resolvedAt
+  notes
+}
+
+User ||--o| Patient : "has"
+User ||--o{ Plan : "authors"
+Patient ||--o{ Plan : "receives"
+Plan ||--|{ Rx : "contains"
+Med ||--o{ Rx : "prescribed in"
+Plan ||--o{ FU : "schedules"
+Rx ||--o{ AR : "generates"
+Patient ||--o{ SL : "reports"
+SL |o--o| Esc : "triggers"
+AR |o--o| Esc : "triggers"
+User ||--o{ Esc : "handles"
+@enduml

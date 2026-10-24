@@ -1,0 +1,57 @@
+@startuml activity
+!include _style.iuml
+skinparam defaultFontSize 17
+skinparam activity {
+  BackgroundColor #E3F0EF
+  BorderColor #0F4C5C
+  DiamondBackgroundColor #FFFFFF
+  DiamondBorderColor #0F4C5C
+  StartColor #1F2A30
+  EndColor #1F2A30
+}
+skinparam conditionStyle diamond
+skinparam swimlane {
+  BorderColor #7A8A90
+  TitleFontSize 17
+  TitleFontStyle bold
+}
+title Workflow: Symptom Report and Escalation
+
+|Patient|
+start
+:Open "Report Symptom";
+:Enter symptoms and
+severity;
+while (Input valid?) is ([No])
+  :Show error, patient
+corrects the input;
+endwhile ([Yes])
+:Submit report;
+|System|
+:Save SymptomLog and
+evaluate red-flag rules;
+if (Red flag found?) then ([No])
+  :Set tier = self-care;
+  |Patient|
+  :View self-care advice;
+else ([Yes])
+  |System|
+  :Set tier = teleconsult,
+urgent or emergency;
+  :Create Escalation
+(status = open);
+  fork
+    |Patient|
+    :View "Clinician alerted"
+    message;
+  fork again
+    |Clinician|
+    :Review and acknowledge
+escalation;
+    :Resolve escalation
+    with notes;
+  end fork
+endif
+|System|
+stop
+@enduml

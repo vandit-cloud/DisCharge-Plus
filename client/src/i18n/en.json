@@ -1,0 +1,193 @@
+{
+  "app": {
+    "synthetic": "Demo system · synthetic data only",
+    "loading": "Loading…",
+    "error": "Something went wrong. Check your internet and try again.",
+    "retry": "Try again",
+    "back": "Back",
+    "logout": "Log out",
+    "language": "Language"
+  },
+  "login": {
+    "title": "Log in",
+    "subtitle": "Your care plan after leaving hospital",
+    "phone": "Mobile number",
+    "password": "Password",
+    "submit": "Log in",
+    "newPatient": "New patient?",
+    "register": "Create an account"
+  },
+  "register": {
+    "title": "Create an account",
+    "fullName": "Full name",
+    "phone": "Mobile number",
+    "password": "Password",
+    "passwordHint": "At least 8 characters",
+    "dateOfBirth": "Date of birth",
+    "gender": "Gender",
+    "district": "District",
+    "language": "Language",
+    "abhaId": "ABHA ID (optional)",
+    "abhaHint": "14 digits",
+    "submit": "Create account",
+    "haveAccount": "Already registered?",
+    "login": "Log in"
+  },
+  "gender": {
+    "female": "Female",
+    "male": "Male",
+    "other": "Other"
+  },
+  "errors": {
+    "UNAUTHORIZED": "Mobile number or password is wrong",
+    "TOO_MANY_ATTEMPTS": "Too many attempts. Try again in 15 minutes.",
+    "PHONE_TAKEN": "This mobile number is already registered",
+    "ABHA_TAKEN": "This ABHA ID is already registered",
+    "DOSE_WINDOW_CLOSED": "The time to mark this medicine has passed",
+    "DOSE_NOT_DUE": "It is not time for this medicine yet",
+    "DOSE_MISSED": "This medicine was recorded as missed",
+    "PLAN_CLOSED": "This care plan is closed",
+    "required": "Please fill this in",
+    "phone": "Enter a 10-digit mobile number",
+    "password": "Use at least 8 characters",
+    "abha": "An ABHA ID has 14 digits",
+    "VALIDATION_FAILED": "Please check what you entered and try again.",
+    "FORBIDDEN": "You do not have access to this.",
+    "DOSE_CHANGED": "This medicine was just updated. Please refresh."
+  },
+  "nav": {
+    "home": "Home",
+    "medicines": "Medicines",
+    "plan": "My plan",
+    "followups": "Check-ups"
+  },
+  "home": {
+    "greeting": "Namaste, {{name}}",
+    "unwell": "I feel unwell",
+    "todaysMedicines": "Today's medicines",
+    "progress": "{{taken}} of {{total}} taken",
+    "markTaken": "I took it",
+    "taken": "Taken",
+    "missed": "Missed",
+    "later": "Later",
+    "noPlan": "Your doctor has not added a care plan yet.",
+    "noDoses": "No medicines today.",
+    "allDone": "All medicines taken for today",
+    "nextCheckup": "Next check-up"
+  },
+  "slot": {
+    "morning": "Morning",
+    "afternoon": "Afternoon",
+    "evening": "Evening",
+    "night": "Night"
+  },
+  "plan": {
+    "title": "My care plan",
+    "discharged": "Left hospital on {{date}}",
+    "doctor": "Doctor",
+    "diagnosis": "Diagnosis",
+    "dangerSigns": "Get help quickly if you have:",
+    "emergency": "Emergency? Call 108",
+    "closed": "This care plan is closed: {{status}}"
+  },
+  "planStatus": {
+    "active": "Active",
+    "completed": "Completed",
+    "readmitted": "Admitted again",
+    "lost_to_followup": "Lost contact"
+  },
+  "medicines": {
+    "title": "My medicines",
+    "thisWeek": "This week: {{percent}}% taken",
+    "noDataYet": "Your first doses are coming up",
+    "critical": "Very important – do not miss",
+    "forDays": "for {{count}} days",
+    "last7": "Last 7 days"
+  },
+  "frequency": {
+    "OD": "Once a day",
+    "BD": "Twice a day",
+    "TDS": "3 times a day",
+    "QID": "4 times a day"
+  },
+  "report": {
+    "title": "How do you feel?",
+    "tapAll": "Tap everything you feel",
+    "next": "Next",
+    "severityTitle": "How bad is it?",
+    "youChose": "You chose",
+    "send": "Send to my doctor",
+    "sending": "Sending…"
+  },
+  "severity": {
+    "1": "A little",
+    "2": "Mild",
+    "3": "Medium",
+    "4": "Bad",
+    "5": "Very bad"
+  },
+  "tier": {
+    "self_care": "Care at home",
+    "teleconsult": "Talk to a doctor",
+    "urgent": "Urgent",
+    "emergency": "Emergency"
+  },
+  "result": {
+    "self_care": {
+      "title": "Rest at home",
+      "body": "Keep taking your medicines. Tell us again if you feel worse."
+    },
+    "teleconsult": {
+      "title": "Your doctor will call you",
+      "body": "Keep your phone near you."
+    },
+    "urgent": {
+      "title": "See a doctor today",
+      "body": "Go to the hospital or clinic today."
+    },
+    "emergency": {
+      "title": "Go to hospital now",
+      "body": "Call 108 or go to the nearest hospital."
+    },
+    "unassigned": {
+      "title": "Contact a health centre today",
+      "body": "No doctor is linked to your account yet. Please visit or call your nearest health centre."
+    },
+    "alerted": "Your report is on your doctor's alert list",
+    "notAlerted": "No doctor is linked to your account yet.",
+    "ifWorse": "If you feel worse, call 108.",
+    "backHome": "Back to home"
+  },
+  "followups": {
+    "title": "My check-ups",
+    "upcoming": "Coming up",
+    "past": "Earlier",
+    "none": "No check-ups yet"
+  },
+  "followUpType": {
+    "in_person": "Clinic visit",
+    "teleconsult": "Video call",
+    "lab_test": "Test",
+    "phone_check": "Phone call"
+  },
+  "followUpStatus": {
+    "completed": "Done",
+    "missed": "Missed",
+    "overdue": "Overdue",
+    "today": "Today"
+  },
+  "symptom": {
+    "CHEST_PAIN": "Chest pain",
+    "BREATHLESS": "Short of breath",
+    "SWELLING_LEGS": "Swollen legs",
+    "DIZZY": "Dizzy",
+    "FAINTING": "Fainted",
+    "CONFUSION": "Confused",
+    "FEVER": "Fever",
+    "VOMITING": "Vomiting",
+    "SHAKY_SWEATY": "Shaky and sweaty",
+    "EXTREME_THIRST": "Very thirsty",
+    "LOW_URINE": "Passing little urine",
+    "WOUND_PROBLEM": "Wound red or leaking"
+  }
+}
