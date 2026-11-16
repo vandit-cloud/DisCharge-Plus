@@ -31,7 +31,7 @@ function useDoseReminders(patientId) {
   }, []); // once: ask permission on entry, clear the reminders on leaving (logout)
 
   useEffect(() => {
-    if (doses.data) syncReminders(doses.data, t).catch(() => {});
+    if (doses.data) syncReminders(doses.data, t).catch((error) => console.warn('Reminders not scheduled:', error));
   }, [doses.data, t]);
 }
 

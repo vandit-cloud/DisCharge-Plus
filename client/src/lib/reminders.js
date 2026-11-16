@@ -4,6 +4,7 @@
 // server (the cron sweep): the phone reminds, the server is the safety net.
 import { Capacitor } from '@capacitor/core';
 import { LocalNotifications } from '@capacitor/local-notifications';
+import { medicineName } from './format.js';
 
 export const isApp = Capacitor.isNativePlatform();
 
@@ -15,6 +16,8 @@ export const isApp = Capacitor.isNativePlatform();
 export function reminderId(adherenceId, nudge = 0) {
   return parseInt(adherenceId.slice(-7), 16) * 4 + nudge;
 }
+
+const NUDGE_MINUTES = 60; // a dose turns "missed" at 120 min (DOSE_GRACE_MINUTES on the server)
 
 /**
  * Decide which reminders to set. Pure function: no phone APIs, so it is easy to reason about and test.
@@ -33,14 +36,37 @@ export function reminderId(adherenceId, nudge = 0) {
  * @returns      array of { id, at: Date, title, body }. Return [] to set no reminders.
  */
 export function planReminders(doses, t, now = new Date()) {
-  // TODO(rudra): decide the reminder rules. Questions to settle:
-  //  - Which doses? (only 'pending' ones whose time is still in the future)
-  //  - One notification per dose, or one per slot? (Kantaben takes 3 tablets at 08:00:
-  //    3 notifications at once, or 1 saying "3 medicines"?)
-  //  - When? (at the dose time, or a few minutes before?)
-  //  - A second nudge if still not taken? (the dose can be marked until 2 h after its time)
-  //  - Should critical medicines (isCritical) say something different?
-  return [];
+  // Policy (chosen by AI, review):
+  //  - One notification per slot time, not per tablet: Kantaben takes 3 tablets at 08:00 and
+  //    should hear one reminder listing all three.
+  //  - First reminder at the dose time, matching the slot the sun-path shows. The "Mark taken"
+  //    button is already open (from 1 h before), so tapping the notification lets her mark it.
+  //  - One nudge NUDGE_MINUTES later for whatever is still pending. Marking a dose refetches the
+  //    doses and reschedules, so the nudge disappears once she has marked them. It stays well
+  //    inside the 2 h grace window, before the server marks the dose missed and escalates.
+  //  - If any medicine in the slot is critical, both notifications add the "don't miss" line.
+  const bySlotTime = new Map();
+  for (const dose of doses) {
+    if (dose.status !== 'pending') continue;
+    const group = bySlotTime.get(dose.scheduledAt) ?? [];
+    group.push(dose);
+    bySlotTime.set(dose.scheduledAt, group);
+  }
+
+  const reminders = [];
+  for (const [scheduledAt, group] of bySlotTime) {
+    const slot = t(`slot.${group[0].slot}`);
+    const medicines = group.map((d) => medicineName(d.prescription?.medication)).filter(Boolean).join(', ');
+    const critical = group.some((d) => d.prescription?.isCritical);
+    const body = t('reminder.body', { medicines }) + (critical ? `\n${t('reminder.critical')}` : '');
+    const id = group.map((d) => d.adherenceId).sort()[0];
+    const due = new Date(scheduledAt);
+    const nudge = new Date(due.getTime() + NUDGE_MINUTES * 60_000);
+
+    if (due > now) reminders.push({ id: reminderId(id, 0), at: due, title: t('reminder.title', { slot }), body });
+    if (nudge > now) reminders.push({ id: reminderId(id, 1), at: nudge, title: t('reminder.nudge', { slot }), body });
+  }
+  return reminders;
 }
 
 /** Ask for notification permission (Android 13+ shows a dialog once). Returns true if allowed. */
@@ -64,6 +90,10 @@ export async function syncReminders(doses, t) {
       title,
       body,
       schedule: { at, allowWhileIdle: true }, // fire even when the phone is dozing
+      // Inexact alarm: may arrive a few minutes late, which is fine for a medicine reminder.
+      // Exact alarms need "Alarms & reminders" access, which Android 14+ denies by default; the
+      // plugin would then open that settings screen on every schedule() and wait there.
+      isExactNotification: false,
     })),
   });
 }

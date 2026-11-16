@@ -44,3 +44,6 @@ yarn-error.log*
 
 # Local tool settings
 .devin/
+
+# Output of client/scripts/try-reminders.mjs
+client/try-reminders.txt
