@@ -301,3 +301,44 @@ Key rules:
 - Vercel live: https://dis-charge-plus.vercel.app (VITE_API_URL needed a redeploy; CLIENT_ORIGIN on Render set to it). Browser-verified end to end: clinician dashboard + escalation queue (/d/escalations), Kantaben home in Gujarati with sun-path, no console errors. Remaining: cron-job.org pinger on /api/health for demo weeks; delete empty Atlas "test" DB.
 - Patient Android app started (Capacitor 8, appId in.discharge.plus): client/android/, `npm run build:android` (mode android -> .env.android with Render URL, then cap sync), APK via `cd client/android && ./gradlew assembleDebug` (local.properties sdk.dir must use forward slashes). Reminders: client/src/lib/reminders.js (local notifications, cleared on logout), wired in PatientShell (doses today+tomorrow, app only); planReminders() left as TODO(rudra); i18n reminder.* keys added (145 keys; hi/gu need native check). Render CLIENT_ORIGIN must add https://localhost. Not committed yet.
 - Clinician alerts (website): client/src/lib/alerts.js (new open escalations since last 30 s poll -> browser notification + Web Audio beeps + "(n) DisCharge+" tab title), "Turn on alerts" button in ClinicianShell sidebar, escalations poll continues in background tabs. alertFor() policy left as TODO(rudra) (returns null = no notification yet). Locally verified: title 4 -> 5 after a new report, no console errors. User had not seen Kantaben alerts: they were in Dr. Mehta live queue (likely looked at localhost or wrong login). Not committed/pushed yet (Vercel deploys on push).
+- Speed: Render was in Oregon (default) vs Atlas Mumbai -> dashboard 3.3 s. Recreated from Blueprint with region: singapore -> new API https://discharge-api.onrender.com; reused-connection health 0.1 s, dashboard ~1.3 s, patients ~1.1 s (rest = ~100 small queries on free-tier CPU). .env.android updated, APK rebuilt. User to update Vercel VITE_API_URL + cron-job URL.
+- Dose reminders policy written by AI at the student's request (planReminders: one per slot time at dose time + one nudge 60 min later if still pending, critical line if any critical medicine). Emulator test found the plugin opens Android "Alarms & reminders" settings and waits on every schedule() (exact alarms denied by default on Android 14+): fixed with isExactNotification:false. Verified on emulator: 6 reminders scheduled for Kantaben, test notification delivered ~25 s late. Dev helper: npm run try:reminders (writes client/try-reminders.txt). APK rebuilt; not committed yet.
+
+### 2026-10-26 — FSD lab manual (separate subject, not DisCharge+)
+- Student asked for the Full Stack Development (BC05001051) lab manual from `docs/format for LAB Manual (1).docx`: all 11 practicals with code and output.
+- AI built everything in `lab-manual/` (own package.json, shared node_modules): p01–p11 code, `scripts/capture.mjs` (headless Chrome screenshots + API/console output), `scripts/build_manual.py` (fills the college template: cover, certificate, index kept; index page numbers are PAGEREF fields filled by Word via `scripts/finish_in_word.ps1`).
+- Output: `lab-manual/FSD-Lab-Manual.docx` + `.pdf`, 68 pages, 35 real screenshots. P5 uses a real network log of amazon.in recorded on 2026-10-26.
+- Student must hand-fill name/enrolment/class/term, certificate blanks, footer "Enrolment No." and the Date/Sign columns. Not committed.
+
+### 2026-10-28 — SDO (DevOps) lab manual started (separate subject, not DisCharge+)
+- Student asked for practicals for `docs/SDO-INDEX.pdf` (15 DevOps practicals) in printable form. Answers: subject
+  name/code left blank to hand-fill; outputs from real runs; P10 Cloud VM left for later (write steps, blank output);
+  small separate demo app; public GitHub repo allowed; student will add the `workflow` gh scope for P15.
+- Built in `sdo-lab-manual/` (see its README): demo app `app/` (Express + prom-client, 5 node:test tests, Dockerfile,
+  Jenkinsfile, k8s/, .github/workflows/devops.yml), configs for P4–P15, `scripts/lib.sh` transcript helper.
+- Done for real: P1, P2, P3 transcripts in `outputs/`. GitHub repo https://github.com/vandit-cloud/sdo-devops-lab
+  created (PR #1 merged = Jenkinsfile; issue #2 "Add Kubernetes manifests" open, to be closed by the P15 PR).
+- Blocked: Docker Desktop can't start (`hasNoVirtualization`): WSL 2 is not installed (firmware virtualization is on).
+  Student must run `wsl --install --no-distribution` in an admin PowerShell and restart.
+- Next: download jq/kind/terraform into `sdo-lab-manual/tools/`; write run.sh for P4–P9, P11–P15 and test each;
+  `scripts/capture.mjs` (screenshots, playwright-core + Chrome); `scripts/build_manual.py` adapted from
+  `lab-manual/scripts/build_manual.py` (cover + certificate from the template, index copied from SDO-INDEX.pdf with
+  DATE/SIGN columns); Word COM -> PDF.
+- Later same day: WSL 2 could not be installed (winget reinstalled the WSL package, but DISM's VirtualMachinePlatform
+  download from Windows Update stalled at 37%/50% on this Insider build 26300). Docker practicals were run on a GitHub
+  Codespace instead (`sdo-lab-4jrvwx5v59wqfq64r`, 4-core, now **stopped**); its leftover iptables-legacy FORWARD DROP
+  blocked container-to-container traffic (fix in sdo-lab-manual/README).
+- Student chose "hybrid" to save time: real output for P1-P4, P5 (pipeline build #1), P6-P9 with 9 screenshots;
+  P5 steps 3-5 and P11-P15 written as "Expected Output" (manual says they were not executed); P10 steps + blank boxes.
+- Built `sdo-lab-manual/SDO-Lab-Manual.docx` + `.pdf` (63 pages): template cover (subject name/code blank) + certificate,
+  index copied from SDO-INDEX.pdf, 15 practicals (Aim, Objective, Environment, Theory, Procedure, Code, Output, Conclusion).
+- Not done: P15's PR (k8s/ + .github/workflows) was never pushed, so issue #2 on the GitHub repo is still open. Not committed.
+- Follow-up: codespace deleted. P10 now also has a written "Expected Output" (EC2 details, SSH session, curl from PC)
+  instead of blank screenshot boxes; manual still 63 pages. DOCX is the editable source, PDF is the print copy.
+
+### 2026-11-16 — Clinician alert policy
+- Student asked the AI to finish and commit the clinician alert rules. `alertFor()` in `client/src/lib/alerts.js`
+  (was `TODO(rudra)`): every new open escalation notifies; emergency = 3 beeps + sticky, urgent = 2 beeps,
+  teleconsult = silent; tier only (missed critical dose is already urgent, D6); unknown tier = no alert. Recorded as B13.
+- 84/84 server tests pass, client builds. Committed alerts.js + DECISIONS.md + this file; the Android reminder
+  changes (reminders.js, PatientShell.jsx, .env.android, package.json, try-reminders.mjs, .gitignore) are still uncommitted.

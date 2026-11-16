@@ -15,13 +15,17 @@ import { TIER_STYLE } from './format.js';
  * @returns null for no alert, or { sound: 0 | 1 | 2 | 3 (number of beeps), sticky: boolean }
  *          sticky = the notification stays on screen until the clinician clicks or closes it.
  */
+// Every new escalation gets a notification; only the loudness changes with the tier (Decision B13).
+// The tier alone decides, not the source: the server already gives a missed critical dose its tier
+// (urgent, D6), so the client doesn't second-guess the rule engine.
+const ALERT_BY_TIER = {
+  emergency: { sound: 3, sticky: true }, // must not vanish while the clinician is away from the screen
+  urgent: { sound: 2, sticky: false },
+  teleconsult: { sound: 0, sticky: false }, // silent: a tone for every routine call-back gets ignored
+};
+
 export function alertFor(escalation) {
-  // TODO(rudra): decide the alert policy. Questions to settle:
-  //  - Which tiers get a notification at all? (every new escalation, or only emergency + urgent?)
-  //  - Which tiers make a sound, and how many beeps? (an alarm that rings for everything gets ignored)
-  //  - Which stay on screen until handled (sticky)? (an emergency shouldn't vanish after 5 seconds)
-  //  - Should a missed critical dose (source 'missed_dose') be treated like a symptom report?
-  return null;
+  return ALERT_BY_TIER[escalation?.tier] ?? null; // unknown tier: no alert (it is still in the queue)
 }
 
 let audio = null; // created on the first click: browsers block sound until the user has interacted
