@@ -1,0 +1,50 @@
+@startuml activity-clinician
+!include _style.iuml
+skinparam defaultFontSize 17
+skinparam activity {
+  BackgroundColor #EAF7FB
+  BorderColor #1E7F8C
+  DiamondBackgroundColor #FFFFFF
+  DiamondBorderColor #1E7F8C
+  StartColor #20343A
+  EndColor #20343A
+  BarColor #20343A
+}
+skinparam conditionStyle diamond
+title Clinician Activity
+
+start
+:Login with mobile number
+and password;
+while (Valid?) is ([No])
+  :Show error and
+  enter details again;
+endwhile ([Yes])
+:Open Dashboard
+(risk, trend, no-show list);
+fork
+  :Find patient by
+  mobile or ABHA ID;
+  if (Patient found?) then ([Yes])
+    :Create discharge plan;
+    :System generates
+    follow-ups and doses;
+  else ([No])
+    :Ask patient to
+    register first;
+  endif
+fork again
+  :Open escalation queue;
+  :Acknowledge escalation;
+  :Resolve with notes;
+fork again
+  :View patient details;
+  :Mark follow-up done
+  or close plan;
+fork again
+  :Phone the patients with
+  high no-show risk;
+end fork
+:Logout;
+stop
+@enduml

@@ -1,0 +1,49 @@
+@startuml usecase-patient
+!include _style.iuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam usecase {
+  BackgroundColor #FFFFFF
+  BorderColor #1E7F8C
+  BorderThickness 1.4
+}
+skinparam rectangle {
+  BorderColor #1E7F8C
+  BorderThickness 1.6
+  FontSize 17
+  FontStyle bold
+}
+skinparam actorBorderColor #20343A
+skinparam actorBackgroundColor #FFFFFF
+
+actor Patient
+
+rectangle "DisCharge+ System" {
+  usecase "Register" as UC1
+  usecase "Login" as UC2
+  usecase "Choose Language\n(English / Hindi / Gujarati)" as UC3
+  usecase "View Today's Medicines" as UC4
+  usecase "Mark Dose Taken" as UC5
+  usecase "View Care Plan" as UC6
+  usecase "View Check-ups" as UC7
+  usecase "Report Symptom" as UC8
+  usecase "Evaluate Red-Flag Rules" as UC9
+  usecase "Raise Escalation" as UC10
+  usecase "Receive Dose Reminder" as UC11
+  usecase "Logout" as UC12
+}
+
+Patient -- UC1
+Patient -- UC2
+Patient -- UC3
+Patient -- UC4
+Patient -- UC5
+Patient -- UC6
+Patient -- UC7
+Patient -- UC8
+Patient -- UC12
+Patient -- UC11
+
+UC8 ..> UC9 : <<include>>
+UC10 .up.> UC9 : <<extend>>\n[red flag found]
+@enduml

@@ -33,6 +33,9 @@ rectangle "DisCharge+ System" {
   usecase "Generate Follow-up &\nDose Schedule" as UC10
   usecase "Raise Escalation" as UC7
   usecase "Detect Missed\nDoses" as UC8
+  usecase "Receive Dose\nReminder" as UC13
+  usecase "Predict Follow-up\nNo-show Risk" as UC14
+  usecase "Receive Escalation\nAlert" as UC15
 }
 
 Patient -- UC1
@@ -40,16 +43,19 @@ Patient -- UC2
 Patient -- UC3
 Patient -- UC4
 Patient -- UC5
+Patient -- UC13
 
 UC2 -- Clinician
 UC9 -- Clinician
 UC11 -- Clinician
 UC12 -- Clinician
+UC15 -- Clinician
 
 UC8 -- Sched
 
 UC5 ..> UC6 : <<include>>
 UC9 ..> UC10 : <<include>>
+UC12 ..> UC14 : <<include>>
 UC7 .up.> UC6 : <<extend>>\n[red flag found]
 UC7 .up.> UC8 : <<extend>>\n[critical dose]
 @enduml

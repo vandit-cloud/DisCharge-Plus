@@ -31,6 +31,7 @@ actor Clinician
 node "Presentation Tier: React + Vite + Tailwind (Vercel)" as FE {
   component "Patient Pages\n(en / hi / gu)" as PP
   component "Clinician Dashboard\n& Escalation Queue" as CP
+  component "Android App (Capacitor)\nlocal dose reminders" as AND
   component "API Client\n(JWT in header)" as AC
 }
 
@@ -42,6 +43,7 @@ node "Application Tier: Node.js + Express (Render)" as BE {
   component "Symptom Service +\nRed-Flag Rule Engine" as S4
   component "Escalation &\nDashboard Service\n(rule-based risk band)" as S5
   component "node-cron job\nmissed-dose sweep" as CRON
+  component "No-show Model\n(logistic regression,\nJSON weights)" as ML
 }
 
 node "Data Tier: MongoDB Atlas" as DT {
@@ -49,6 +51,8 @@ node "Data Tier: MongoDB Atlas" as DT {
 }
 
 Patient --> PP
+Patient --> AND
+AND --> AC
 Clinician --> CP
 PP --> AC
 CP --> AC
@@ -61,6 +65,7 @@ MW --> S5
 CRON --> S3
 S3 --> S5 : missed critical dose
 S4 --> S5 : red flag
+S5 --> ML : upcoming follow-ups
 S1 --> DB
 S2 --> DB
 S3 --> DB

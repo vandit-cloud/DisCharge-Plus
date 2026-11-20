@@ -1,0 +1,67 @@
+// System flow chart of DisCharge+ (standard flowchart symbols). Render: dot -Tpng -Gdpi=200 flowchart.dot -o flowchart.png
+digraph flow {
+  graph [fontname="Calibri", nodesep=0.35, ranksep=0.42, splines=ortho, newrank=true];
+  node  [fontname="Calibri", fontsize=15, shape=box, style="filled", fillcolor="#EAF7FB", color="#1E7F8C", penwidth=1.4, margin="0.18,0.08"];
+  edge  [fontname="Calibri", fontsize=13, color="#20343A", arrowsize=0.7];
+
+  start    [label="Start", shape=ellipse, fillcolor="#FFFFFF"];
+  open     [label="Open DisCharge+"];
+  hasAcc   [label="Has an\naccount?", shape=diamond, fillcolor="#FFFFFF"];
+  register [label="Register\n(patient)"];
+  login    [label="Enter mobile number\nand password", shape=parallelogram];
+  valid    [label="Valid?", shape=diamond, fillcolor="#FFFFFF"];
+  role     [label="Role?", shape=diamond, fillcolor="#FFFFFF"];
+
+  phome    [label="Patient Home\n(today's medicines)"];
+  pchoice  [label="Action?", shape=diamond, fillcolor="#FFFFFF"];
+  dose     [label="Mark dose taken"];
+  plan     [label="View care plan /\ncheck-ups"];
+  symptom  [label="Report symptoms\nand severity", shape=parallelogram];
+  rules    [label="Evaluate red-flag rules"];
+  flag     [label="Red flag\nfound?", shape=diamond, fillcolor="#FFFFFF"];
+  esc      [label="Create escalation\n(teleconsult / urgent /\nemergency)"];
+  advice   [label="Show self-care advice"];
+
+  dash     [label="Clinician Dashboard\n(risk, trend, no-show list)"];
+  cchoice  [label="Action?", shape=diamond, fillcolor="#FFFFFF"];
+  newplan  [label="Create discharge plan"];
+  gen      [label="Generate follow-ups\nand dose schedule"];
+  queue    [label="Escalation queue:\nacknowledge / resolve"];
+  phone    [label="Phone patients with\nhigh no-show risk"];
+
+  logout   [label="Logout"];
+  stop     [label="Stop", shape=ellipse, fillcolor="#FFFFFF"];
+
+  start -> open -> hasAcc;
+  hasAcc -> register [xlabel="No"];
+  hasAcc -> login [xlabel="Yes"];
+  register -> login;
+  login -> valid;
+  valid -> login [xlabel="No"];
+  valid -> role [xlabel="Yes"];
+  role -> phome [xlabel="Patient"];
+  role -> dash [xlabel="Clinician"];
+
+  phome -> pchoice;
+  pchoice -> dose;
+  pchoice -> plan;
+  pchoice -> symptom;
+  symptom -> rules -> flag;
+  flag -> esc [xlabel="Yes"];
+  flag -> advice [xlabel="No"];
+
+  dash -> cchoice;
+  cchoice -> newplan;
+  cchoice -> queue;
+  cchoice -> phone;
+  newplan -> gen;
+
+  dose -> logout;
+  plan -> logout;
+  esc -> logout;
+  advice -> logout;
+  gen -> logout;
+  queue -> logout;
+  phone -> logout;
+  logout -> stop;
+}

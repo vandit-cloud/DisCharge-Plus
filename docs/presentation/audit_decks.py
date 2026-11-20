@@ -1,9 +1,9 @@
 """
-Checks both decks against the rules in BCA_Sem_5_Project_Presentation_Format_and_Instructions.pdf.
+Checks both decks against the rules in BCA_Sem_5_Project_Presentation_Format_and_Instructions FINAL.pdf.
 
     python audit_decks.py [main.pptx] [support.pptx]
 
-1. Slide order of the main deck (exactly 10, in the PDF's order)
+1. Slide order of the main deck (the FINAL PDF's 15 sections; section 10 = several screenshot slides)
 2. Fonts: only 1-2 families; sizes against the PDF's font table
 3. Consistency: Data Dictionary <-> ER <-> Class <-> Sequence use the same names
 """
@@ -20,8 +20,23 @@ DIAG = HERE.parent / "diagrams"
 sys.path.insert(0, str(HERE))
 from build_decks import DD  # noqa: E402  single source of truth
 
-PDF_ORDER = ["Project Title", "Project Profile", "System Analysis", "Data Dictionary", "Use Case Diagram",
-             "Class Diagram", "Sequence Diagram", "Activity Diagram", "ER Diagram", "Further Work"]
+# FINAL PDF order. Section 10 may run over several slides (one per screen), so it is matched as a run.
+PDF_HEAD = ["Project Title", "Project Profile", "System Analysis", "Data Dictionary", "Use Case Diagram",
+            "Class Diagram", "Sequence Diagram", "Activity Diagram", "ER Diagram"]
+PDF_SHOTS = "User Interface Design / Screenshots"
+PDF_TAIL = ["Limitations of the Project", "Future Scope / Further Work", "Conclusion", "References / Bibliography",
+            "THANK YOU"]
+MIN_SCREENS = 5  # PDF: "a minimum of 5-7 important screens"
+
+
+def expected_order(n_slides):
+    shots = n_slides - len(PDF_HEAD) - len(PDF_TAIL)
+    if shots < 1:
+        problems.append(f"only {n_slides} slides: no room for the screenshot section")
+        shots = 0
+    return PDF_HEAD + [PDF_SHOTS] * shots + PDF_TAIL
+
+
 MIN_PT = {"title": 28, "table": 16, "body": 18, "reference": 14}
 problems = []
 
@@ -44,11 +59,12 @@ def audit_deck(path, check_order):
     prs = Presentation(str(path))
     print(f"\n=== {path.name}: {len(prs.slides)} slides")
     fonts = Counter()
+    order = expected_order(len(prs.slides)) if check_order else []
     for i, slide in enumerate(prs.slides, 1):
         titles = [r.text for k, r in runs_of(slide) if r.font.size and r.font.size >= Pt(28)]
         print(f"  {i:>2}. {titles[0] if titles else '(no title)'}")
         if check_order:
-            want = PDF_ORDER[i - 1]
+            want = order[i - 1]
             if i > 1 and not any(want.lower() in t.lower() for t in titles):
                 problems.append(f"{path.name} slide {i}: expected '{want}', found {titles[:1]}")
         if i == 1:
@@ -62,6 +78,11 @@ def audit_deck(path, check_order):
             limit = MIN_PT["table"] if kind == "table" else (MIN_PT["reference"] if is_ref else 16)
             if size < limit:
                 problems.append(f"{path.name} slide {i}: {size:g} pt {kind} text '{r.text[:40]}'")
+    if check_order:
+        screens = sum(1 for w in order if w == PDF_SHOTS)
+        print(f"  screenshot slides: {screens}")
+        if screens < MIN_SCREENS:
+            problems.append(f"{path.name}: {screens} screenshot slides, the PDF asks for at least {MIN_SCREENS}")
     print("  fonts on content slides:", dict(fonts))
     if len(fonts) > 1:
         problems.append(f"{path.name}: {len(fonts)} fonts on content slides {list(fonts)}")

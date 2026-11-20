@@ -122,6 +122,15 @@ class RuleEngine {
   + checkMissedDose(record : AdherenceRecord) : Boolean
 }
 
+class NoShowModel {
+  - weights : Number[]
+  - intercept : Number
+  --
+  + predictNoShow(patient : Patient) : Number
+  + noShowReasons(patient : Patient) : String[]
+  + noShowBand(probability : Number, reasons : String[]) : String
+}
+
 User "1" -right- "0..1" Patient : has profile >
 Patient "1" -right- "0..*" DischargePlan : receives >
 User "1" -up- "0..*" DischargePlan : authors >
@@ -135,4 +144,6 @@ AdherenceRecord "1" -- "0..1" Escalation : triggers >
 User "1" -down- "0..*" Escalation : handles >
 RuleEngine .left.> SymptomLog
 RuleEngine ..> Escalation : <<create>>
+NoShowModel ..> FollowUp : scores >
+NoShowModel ..> Patient : reads >
 @enduml

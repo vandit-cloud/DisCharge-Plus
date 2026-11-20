@@ -1,0 +1,55 @@
+@startuml usecase-clinician
+!include _style.iuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam usecase {
+  BackgroundColor #FFFFFF
+  BorderColor #1E7F8C
+  BorderThickness 1.4
+}
+skinparam rectangle {
+  BorderColor #1E7F8C
+  BorderThickness 1.6
+  FontSize 17
+  FontStyle bold
+}
+skinparam actorBorderColor #20343A
+skinparam actorBackgroundColor #FFFFFF
+
+actor Clinician
+actor "Scheduler\n(system timer)" as Sched
+
+rectangle "DisCharge+ System" {
+  usecase "Login" as C1
+  usecase "View Dashboard" as C2
+  usecase "Predict Follow-up\nNo-show Risk" as C3
+  usecase "Find Patient" as C4
+  usecase "View Patient Details" as C5
+  usecase "Create Discharge Plan" as C6
+  usecase "Generate Follow-up &\nDose Schedule" as C7
+  usecase "Mark Follow-up Done /\nClose Plan" as C8
+  usecase "Manage Escalation Queue" as C9
+  usecase "Acknowledge / Resolve\nEscalation" as C10
+  usecase "Receive Escalation Alert" as C11
+  usecase "Detect Missed\nCritical Dose" as C12
+  usecase "Raise Escalation" as C13
+  usecase "Logout" as C14
+}
+
+Clinician -- C1
+Clinician -- C2
+Clinician -- C4
+Clinician -- C5
+Clinician -- C6
+Clinician -- C8
+Clinician -- C9
+Clinician -- C11
+Clinician -- C14
+
+C12 -- Sched
+
+C2 ..> C3 : <<include>>
+C6 ..> C7 : <<include>>
+C10 .up.> C9 : <<extend>>
+C13 .up.> C12 : <<extend>>\n[critical dose]
+@enduml

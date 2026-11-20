@@ -1,0 +1,52 @@
+@startuml sequence-noshow
+!include _style.iuml
+skinparam defaultFontSize 17
+skinparam sequence {
+  LifeLineBorderColor #7A8A90
+  ParticipantBorderColor #1E7F8C
+  ParticipantBackgroundColor #EAF7FB
+  ActorBorderColor #20343A
+  ActorBackgroundColor #FFFFFF
+  DatabaseBorderColor #1E7F8C
+  DatabaseBackgroundColor #EAF7FB
+  GroupBorderColor #7A8A90
+  GroupBackgroundColor #F4F7F7
+}
+skinparam responseMessageBelowArrow true
+autonumber
+hide footbox
+title Use case: View Dashboard → Predict Follow-up No-show Risk
+
+actor Clinician
+participant "DisCharge+\nWeb App" as App
+participant ":DashboardService" as Dash
+participant ":NoShowService" as NS
+participant ":NoShowModel" as ML
+database "MongoDB" as DB
+
+Clinician -> App : open Dashboard
+activate App
+App -> Dash : GET /api/dashboard
+activate Dash
+Dash -> DB : find active plans, FollowUps\n(next 7 days), adherence
+DB --> Dash : plans, follow-ups, doses
+Dash -> NS : scoreUpcomingFollowUps(followUps)
+activate NS
+NS -> DB : earlier missed follow-ups,\nlast dose / symptom time
+DB --> NS : history
+loop each upcoming follow-up
+  NS -> ML : predictNoShow(age, gender,\nprotocol, leadDays, missedBefore)
+  activate ML
+  ML -> ML : sigmoid(weights · inputs)
+  ML --> NS : probability
+  deactivate ML
+  NS -> NS : noShowReasons()\n(adherence, inactivity, distance)
+  NS -> NS : noShowBand(probability, reasons)
+end
+NS --> Dash : rows, riskiest first
+deactivate NS
+Dash --> App : dashboard JSON
+deactivate Dash
+App --> Clinician : "Whom to phone first" list\nwith %, band and reasons
+deactivate App
+@enduml

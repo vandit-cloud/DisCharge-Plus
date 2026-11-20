@@ -1,0 +1,46 @@
+@startuml activity-patient
+!include _style.iuml
+skinparam defaultFontSize 17
+skinparam activity {
+  BackgroundColor #EAF7FB
+  BorderColor #1E7F8C
+  DiamondBackgroundColor #FFFFFF
+  DiamondBorderColor #1E7F8C
+  StartColor #20343A
+  EndColor #20343A
+  BarColor #20343A
+}
+skinparam conditionStyle diamond
+title Patient Activity
+
+start
+:Login with mobile number
+and password;
+while (Valid?) is ([No])
+  :Show error and
+  enter details again;
+endwhile ([Yes])
+:Open Home
+(today's medicines);
+fork
+  :Mark dose taken;
+fork again
+  :View care plan
+  and red flags;
+fork again
+  :View check-ups;
+fork again
+  :Report symptom
+  and severity;
+  if (Red flag found?) then ([Yes])
+    :See "Doctor alerted"
+    and urgent advice;
+  else ([No])
+    :See self-care advice;
+  endif
+fork again
+  :Change language;
+end fork
+:Logout;
+stop
+@enduml
