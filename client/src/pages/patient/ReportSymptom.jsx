@@ -76,7 +76,7 @@ export default function ReportSymptom() {
                 role="radio"
                 aria-checked={active}
                 onClick={() => setSeverity(value)}
-                className={`flex flex-col items-center gap-1 rounded-2xl border-2 px-1 py-3 transition-colors ${active ? 'border-ink bg-ink text-white' : 'border-line bg-white'}`}
+                className={`flex flex-col items-center gap-1 rounded-2xl border-2 px-1 py-3 transition-colors ${active ? 'border-brand bg-brand text-on-brand' : 'border-line bg-surface'}`}
               >
                 <span className="text-3xl" aria-hidden="true">{face}</span>
                 <span className="text-sm font-semibold leading-tight">{t(`severity.${value}`)}</span>
@@ -88,7 +88,7 @@ export default function ReportSymptom() {
           <p className="mb-2 font-semibold text-ink-soft">{t('report.youChose')}</p>
           <ul className="flex flex-wrap gap-2">
             {selected.map((code) => (
-              <li key={code} className="rounded-full bg-white px-3 py-1.5 font-semibold ring-1 ring-line">
+              <li key={code} className="rounded-full bg-surface px-3 py-1.5 font-semibold ring-1 ring-line">
                 <span aria-hidden="true">{SYMPTOM_ICON[code]}</span> {t(`symptom.${code}`)}
               </li>
             ))}
@@ -121,7 +121,7 @@ export default function ReportSymptom() {
               aria-pressed={active}
               onClick={() => toggle(code)}
               className={`relative flex min-h-28 flex-col items-center justify-center gap-1.5 rounded-2xl border-2 p-3 text-center font-semibold leading-tight transition-colors ${
-                active ? 'border-ink bg-ink text-white' : 'border-line bg-white hover:border-ink/40'
+                active ? 'border-brand bg-brand text-on-brand' : 'border-line bg-surface hover:border-ink/40'
               }`}
             >
               {active && <span className="absolute right-2 top-2 grid size-6 place-items-center rounded-full bg-haldi text-sm text-ink" aria-hidden="true">✓</span>}

@@ -43,11 +43,11 @@ function slotState(doses) {
 }
 
 const NODE = {
-  done: { fill: '#e3f0e8', stroke: '#2f6b4f' },
+  done: { fill: '#def3e8', stroke: '#1f7a52' },
   due: { fill: '#fbf1d8', stroke: '#e0a526' },
   missed: { fill: '#fae1df', stroke: '#b3261e' },
-  ahead: { fill: '#ffffff', stroke: '#dde2ee' },
-  empty: { fill: '#f5f7fb', stroke: '#dde2ee' },
+  ahead: { fill: '#ffffff', stroke: '#9fd3de' },
+  empty: { fill: '#eaf7fb', stroke: '#c6e4eb' },
 };
 
 export function SunPath({ doses, nowMinutes, onSelect }) {
@@ -57,8 +57,14 @@ export function SunPath({ doses, nowMinutes, onSelect }) {
 
   return (
     <svg viewBox="0 0 320 150" className="w-full" role="img" aria-label={t('home.todaysMedicines')}>
-      <path d={arcTo(1)} fill="none" stroke="#dde2ee" strokeWidth="3" strokeDasharray="2 7" strokeLinecap="round" />
-      <path d={arcTo(now)} fill="none" stroke="#e0a526" strokeWidth="4" strokeLinecap="round" className="sunpath-trail" />
+      <defs>
+        <linearGradient id="sunpath-trail" x1="0" x2="1">
+          <stop offset="0" stopColor="#63c9d6" />
+          <stop offset="1" stopColor="#1e7f8c" />
+        </linearGradient>
+      </defs>
+      <path d={arcTo(1)} fill="none" stroke="#9fd3de" strokeWidth="3" strokeDasharray="2 7" strokeLinecap="round" />
+      <path d={arcTo(now)} fill="none" stroke="url(#sunpath-trail)" strokeWidth="5" strokeLinecap="round" className="sunpath-trail" />
       {/* "Now" marker, drawn before the stops so a stop stays readable when the sun reaches it. */}
       <g aria-hidden="true">
         <circle cx={sun.x} cy={sun.y} r="11" fill="#e0a526" opacity="0.25" />
@@ -86,11 +92,11 @@ export function SunPath({ doses, nowMinutes, onSelect }) {
             <text x={p.x} y={p.y + 6} textAnchor="middle" fontSize="17" aria-hidden="true">
               {state === 'done' ? '✓' : SLOT_ICON[slot]}
             </text>
-            <text x={p.x} y={p.y + 38} textAnchor="middle" fontSize="12.5" fontWeight="600" fill="#1e2a5a">
+            <text x={p.x} y={p.y + 38} textAnchor="middle" fontSize="12.5" fontWeight="600" fill="#20343a">
               {t(`slot.${slot}`)}
             </text>
             {slotDoses.length > 0 && (
-              <text x={p.x} y={p.y + 53} textAnchor="middle" fontSize="11.5" fill="#4a5580">
+              <text x={p.x} y={p.y + 53} textAnchor="middle" fontSize="11.5" fill="#3d5a61">
                 {taken}/{slotDoses.length}
               </text>
             )}

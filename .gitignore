@@ -47,3 +47,9 @@ yarn-error.log*
 
 # Output of client/scripts/try-reminders.mjs
 client/try-reminders.txt
+
+# Kaggle no-show dataset (download locally, not committed)
+ml/data/
+
+# Local diagram tools (PlantUML jar + Graphviz), downloaded on demand
+.tools/

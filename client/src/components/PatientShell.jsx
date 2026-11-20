@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { NavLink, Outlet } from 'react-router';
+import { NavLink, Outlet, useLocation } from 'react-router';
 import { useAuth } from '../lib/auth.jsx';
 import { addDaysISO, istTodayISO } from '../lib/format.js';
 import { useDoses } from '../lib/queries.js';
@@ -38,12 +38,13 @@ function useDoseReminders(patientId) {
 export function PatientShell() {
   const { t } = useTranslation();
   const { user, logout } = useAuth();
+  const location = useLocation();
   useDoseReminders(user.patientId);
   return (
     <div className="min-h-dvh">
-      <header className="sticky top-0 z-10 border-b border-line bg-paper/95 backdrop-blur">
+      <header className="sticky top-0 z-10 border-b border-white/60 bg-mist/75 backdrop-blur-md">
         <div className="mx-auto flex max-w-lg items-center justify-between gap-2 px-4 py-2.5">
-          <Logo />
+          <Logo compact />
           <div className="flex items-center gap-1">
             <LanguageSwitch />
             <button
@@ -62,24 +63,28 @@ export function PatientShell() {
       </header>
 
       <main className="mx-auto max-w-lg px-4 pb-32 pt-5">
-        <Outlet />
+        {/* Keyed on the path: each page fades in when the patient switches tabs. */}
+        <div key={location.pathname} className="anim-fade">
+          <Outlet />
+        </div>
         <p className="mt-10 text-center text-sm text-ink-soft">{t('app.synthetic')}</p>
       </main>
 
-      <nav className="fixed inset-x-0 bottom-0 z-10 border-t border-line bg-white pb-[env(safe-area-inset-bottom)]">
-        <ul className="mx-auto grid max-w-lg grid-cols-4">
+      {/* Floating glass tab bar. One blurred bar is cheap enough even on low-end phones. */}
+      <nav className="fixed inset-x-0 bottom-0 z-10 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+        <ul className="card-shadow mx-auto grid max-w-lg grid-cols-4 gap-1 rounded-3xl border border-white/80 bg-white/80 p-1.5 backdrop-blur-md">
           {NAV.map(({ to, icon, key, end }) => (
             <li key={to}>
               <NavLink
                 to={to}
                 end={end}
                 className={({ isActive }) =>
-                  `flex min-h-16 flex-col items-center justify-center gap-0.5 text-sm font-semibold ${isActive ? 'text-ink' : 'text-ink-soft'}`
+                  `group flex min-h-15 flex-col items-center justify-center gap-0.5 rounded-2xl text-sm font-semibold transition-colors ${isActive ? 'bg-lagoon/25 text-ink' : 'text-ink-soft hover:bg-paper'}`
                 }
               >
                 {({ isActive }) => (
                   <>
-                    <span className={`grid h-8 w-12 place-items-center rounded-full text-xl ${isActive ? 'bg-haldi-soft' : ''}`} aria-hidden="true">
+                    <span className="grid h-8 w-12 place-items-center text-xl transition-transform group-active:scale-90" aria-hidden="true">
                       {icon}
                     </span>
                     {t(key)}

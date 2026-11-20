@@ -1,16 +1,32 @@
 @import 'tailwindcss';
 
-/* Design tokens. Palette from Gujarat's own materials: indigo dye, neem, turmeric, kumkum. */
+/* Design tokens (redesign 2026-11-17, decision B18). Brand: five teals, from mist to slate.
+   Status colours (neem, amber, clay, kumkum) stay apart from the brand, so "danger" never reads
+   as "brand", and always come with an icon + a word (NFR-11).
+   Values below are the LIGHT theme (patient app, login). The clinician area wraps its pages in
+   .theme-dark, which redefines the same names, so a class like text-ink works in both. */
 @theme {
-  --color-ink: #1e2a5a; /* indigo: text, brand, clinician sidebar */
-  --color-ink-soft: #4a5580;
-  --color-paper: #f5f7fb; /* cool off-white page */
-  --color-line: #dde2ee;
-  --color-neem: #2f6b4f; /* taken, self-care, low risk */
-  --color-neem-soft: #e3f0e8;
-  --color-haldi: #e0a526; /* turmeric: accent, the sun, focus ring */
+  --color-mist: #eaf7fb;
+  --color-frost: #bfeaf2;
+  --color-lagoon: #63c9d6;
+  --color-teal: #1e7f8c;
+  --color-slate: #20343a;
+
+  --color-ink: #20343a; /* main text */
+  --color-ink-soft: #3d5a61; /* secondary text, 6.9:1 on mist */
+  --color-paper: #eaf7fb; /* page, hover rows, inputs */
+  --color-line: #c6e4eb;
+  --color-surface: rgb(255 255 255 / 0.82); /* cards */
+  --color-brand: #1e7f8c; /* primary buttons, selected states, links */
+  --color-on-brand: #ffffff;
+  --color-on-danger: #ffffff;
+  --color-on-success: #ffffff;
+
+  --color-neem: #1f7a52; /* taken, self-care, low risk */
+  --color-neem-soft: #def3e8;
+  --color-haldi: #e0a526; /* turmeric: the sun */
   --color-haldi-soft: #fbf1d8;
-  --color-amber: #9a6a12; /* teleconsult, moderate risk (text-safe amber) */
+  --color-amber: #8f6210; /* teleconsult, moderate risk (text-safe amber) */
   --color-amber-soft: #f8ecd3;
   --color-clay: #b4531a; /* urgent */
   --color-clay-soft: #f9e3d6;
@@ -20,6 +36,61 @@
   /* Latin glyphs come from the first family, Devanagari/Gujarati glyphs fall through. */
   --font-display: 'Baloo 2', 'Baloo Bhai 2', system-ui, sans-serif;
   --font-sans: 'Hind', 'Hind Vadodara', system-ui, sans-serif;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Clinician area: dark frosted glass. Status colours are lighter steps of the same hues, checked
+   for >= 3:1 against the glass surface and told apart by icon + word, never colour alone. */
+.theme-dark {
+  color-scheme: dark; /* native selects, date pickers and scrollbars go dark too */
+  --color-ink: #eaf7fb;
+  --color-ink-soft: #b4dce4;
+  --color-paper: rgb(234 247 251 / 0.07);
+  --color-line: rgb(191 234 242 / 0.2);
+  --color-surface: rgb(234 247 251 / 0.075);
+  --color-brand: #63c9d6;
+  --color-on-brand: #20343a;
+  --color-on-danger: #20343a;
+  --color-on-success: #20343a;
+
+  --color-neem: #4fcb8d;
+  --color-neem-soft: rgb(79 203 141 / 0.16);
+  --color-haldi: #e9b949;
+  --color-haldi-soft: rgb(233 185 73 / 0.16);
+  --color-amber: #e8b84a;
+  --color-amber-soft: rgb(232 184 74 / 0.16);
+  --color-clay: #f39a63;
+  --color-clay-soft: rgb(243 154 99 / 0.16);
+  --color-kumkum: #ff8f88; /* 4.65:1 on the glass surface */
+  --color-kumkum-soft: rgb(255 143 136 / 0.16);
+
+  min-height: 100dvh;
+  color: var(--color-ink);
+  background:
+    radial-gradient(900px 620px at 8% -8%, rgb(30 127 140 / 0.95) 0%, transparent 62%),
+    radial-gradient(760px 560px at 92% 18%, rgb(99 201 214 / 0.38) 0%, transparent 62%),
+    radial-gradient(900px 700px at 55% 112%, rgb(30 127 140 / 0.85) 0%, transparent 65%),
+    var(--color-slate);
+  background-attachment: fixed;
+}
+
+/* Glass blur only on the clinician pages (desktop browsers). Patient pages run on cheap phones,
+   where dozens of blurred cards would stutter, so their cards are near-opaque white instead. */
+.theme-dark .bg-surface {
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+
+/* Card shadow per theme: a soft teal lift on light pages, a glass edge highlight on dark ones. */
+:root {
+  --card-shadow: 0 10px 28px rgb(30 127 140 / 0.1);
+}
+.theme-dark {
+  --card-shadow: inset 0 1px 0 rgb(255 255 255 / 0.1), 0 18px 40px rgb(8 24 28 / 0.22);
+}
+@utility card-shadow {
+  box-shadow: var(--card-shadow);
 }
 
 @layer base {
@@ -28,7 +99,13 @@
     -webkit-text-size-adjust: 100%;
   }
   body {
-    @apply bg-paper text-ink font-sans antialiased;
+    @apply text-ink font-sans antialiased;
+    min-height: 100dvh;
+    background:
+      radial-gradient(640px 480px at 0% 0%, rgb(99 201 214 / 0.45) 0%, transparent 65%),
+      radial-gradient(600px 520px at 100% 70%, rgb(30 127 140 / 0.22) 0%, transparent 65%),
+      linear-gradient(180deg, #eaf7fb 0%, #d4f0f6 100%);
+    background-attachment: fixed;
   }
   h1,
   h2,
@@ -37,7 +114,7 @@
     line-height: 1.15;
   }
   :focus-visible {
-    outline: 3px solid var(--color-haldi);
+    outline: 3px solid var(--color-lagoon);
     outline-offset: 2px;
   }
   button:not(:disabled),
@@ -46,11 +123,51 @@
   }
 }
 
+/* ---------- Motion ----------
+   One moment on page load (numbers count up in JS, charts draw in here), plus feedback to taps.
+   Everything is switched off for people who ask their system for reduced motion. */
+@keyframes draw-line {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes grow-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.anim-draw {
+  stroke-dasharray: 100;
+  animation: draw-line 1.2s var(--ease-out-soft) 0.1s both;
+}
+.anim-grow {
+  transform-origin: left;
+  animation: grow-x 0.7s var(--ease-out-soft) both;
+}
+.anim-fade {
+  animation: fade-in 0.35s var(--ease-out-soft) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
     transition-duration: 0.01ms !important;
   }
 }

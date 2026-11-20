@@ -1,0 +1,41 @@
+{
+  "model": "logistic_regression",
+  "trainedOn": "2026-11-17",
+  "features": [
+    "age",
+    "male",
+    "hypertension",
+    "diabetes",
+    "logLeadDays",
+    "missedBefore"
+  ],
+  "weights": {
+    "age": -0.009424,
+    "male": -0.01621,
+    "hypertension": -0.063646,
+    "diabetes": 0.126239,
+    "logLeadDays": 0.179496,
+    "missedBefore": 0.313015
+  },
+  "intercept": -1.035021,
+  "metrics": {
+    "testAuc": 0.595,
+    "flagTopQuarter": {
+      "cutoff": 0.329,
+      "recall": 0.314,
+      "precision": 0.371
+    },
+    "trainRows": 57541,
+    "testRows": 14418,
+    "noShowRate": 0.285,
+    "scorePercentiles": {
+      "p10": 0.205,
+      "p25": 0.239,
+      "p50": 0.283,
+      "p75": 0.329,
+      "p90": 0.369
+    }
+  },
+  "dataset": "Medical Appointment No Shows, Joni Hoppen, Kaggle (joniarroba/noshowappointments), Vitoria, Brazil, 2016",
+  "licence": "CC BY-NC-SA 4.0: non-commercial use only; derived model carries the same licence"
+}

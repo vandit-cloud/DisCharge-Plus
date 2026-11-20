@@ -28,14 +28,14 @@ export function PageHeader({ title, subtitle, actions, back }) {
 /** A row of toggle buttons; exactly one value is active. */
 export function Segmented({ label, options, value, onChange }) {
   return (
-    <div role="group" aria-label={label} className="inline-flex flex-wrap rounded-xl border border-line bg-white p-1">
+    <div role="group" aria-label={label} className="inline-flex flex-wrap rounded-xl border border-line bg-surface p-1">
       {options.map((option) => (
         <button
           key={option.value}
           type="button"
           aria-pressed={value === option.value}
           onClick={() => onChange(option.value)}
-          className={`min-h-9 rounded-lg px-3 text-sm font-semibold ${value === option.value ? 'bg-ink text-white' : 'text-ink-soft hover:text-ink'}`}
+          className={`min-h-9 rounded-lg px-3 text-sm font-semibold ${value === option.value ? 'bg-brand text-on-brand' : 'text-ink-soft hover:text-ink'}`}
         >
           {option.label}
         </button>
@@ -61,7 +61,7 @@ export function EscalationRow({ escalation, showPatient = true }) {
     <li>
       <Link
         to={`/d/escalations/${escalation.escalationId}`}
-        className={`flex flex-wrap items-center gap-x-4 gap-y-1 border-l-4 bg-white px-4 py-3 hover:bg-paper ${style.stripe}`}
+        className={`flex flex-wrap items-center gap-x-4 gap-y-1 border-l-4 bg-surface px-4 py-3 hover:bg-paper ${style.stripe}`}
       >
         <div className="w-32 shrink-0">
           <TierBadge tier={escalation.tier} label={tierLabel(escalation.tier)} />
@@ -81,8 +81,8 @@ export function EscalationRow({ escalation, showPatient = true }) {
 
 export function Section({ title, action, children, className = '' }) {
   return (
-    <section className={`rounded-2xl border border-line bg-white ${className}`}>
-      <div className="flex items-center justify-between gap-3 border-b border-line px-5 py-3.5">
+    <section className={`card-shadow rounded-3xl border border-line bg-surface ${className}`}>
+      <div className="flex items-center justify-between gap-3 px-6 pb-2 pt-5">
         <h2 className="text-lg font-bold">{title}</h2>
         {action}
       </div>

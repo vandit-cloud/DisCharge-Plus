@@ -24,7 +24,7 @@ export default function PatientList() {
       <PageHeader
         title="Patients"
         subtitle="Patients you have written a discharge plan for, highest risk first."
-        actions={<Link to="/d/plans/new" className="inline-flex min-h-12 items-center rounded-xl bg-ink px-5 font-semibold text-white">+ New plan</Link>}
+        actions={<Link to="/d/plans/new" className="inline-flex min-h-12 items-center rounded-xl bg-brand px-5 font-semibold text-on-brand">+ New plan</Link>}
       />
       <div className="mb-4 flex flex-wrap items-center gap-3">
         <input
@@ -42,7 +42,7 @@ export default function PatientList() {
           list.length === 0 ? (
             <Empty icon="🔍">No patients match. To add a new patient, write their first plan with “New plan”.</Empty>
           ) : (
-            <div className="overflow-x-auto rounded-2xl border border-line bg-white">
+            <div className="overflow-x-auto rounded-2xl border border-line bg-surface">
               <table className="w-full min-w-[720px] text-left">
                 <thead className="text-sm text-ink-soft">
                   <tr className="border-b border-line">

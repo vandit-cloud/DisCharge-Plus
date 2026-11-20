@@ -2,10 +2,10 @@ import { useTranslation } from 'react-i18next';
 import { RISK_STYLE, TIER_STYLE } from '../lib/format.js';
 
 const BUTTON = {
-  primary: 'bg-ink text-white hover:bg-ink/90',
-  danger: 'bg-kumkum text-white hover:bg-kumkum/90',
-  success: 'bg-neem text-white hover:bg-neem/90',
-  secondary: 'bg-white text-ink border border-line hover:border-ink/40',
+  primary: 'bg-brand text-on-brand hover:bg-brand/90',
+  danger: 'bg-kumkum text-on-danger hover:bg-kumkum/90',
+  success: 'bg-neem text-on-success hover:bg-neem/90',
+  secondary: 'bg-surface text-ink border border-line hover:border-ink/40',
   ghost: 'text-ink hover:bg-ink/5',
 };
 
@@ -21,7 +21,7 @@ export function Button({ variant = 'primary', size = 'md', className = '', ...pr
 }
 
 export const inputClass =
-  'block w-full min-h-12 rounded-xl border border-line bg-white px-4 text-ink placeholder:text-ink-soft/60 focus:border-ink focus:outline-none aria-[invalid=true]:border-kumkum';
+  'block w-full min-h-12 rounded-xl border border-line bg-surface px-4 text-ink placeholder:text-ink-soft/60 focus:border-brand focus:outline-none aria-[invalid=true]:border-kumkum';
 
 export function Field({ label, hint, error, htmlFor, children }) {
   return (
@@ -42,7 +42,7 @@ export function Field({ label, hint, error, htmlFor, children }) {
 }
 
 export function Card({ className = '', ...props }) {
-  return <div className={`rounded-2xl border border-line bg-white ${className}`} {...props} />;
+  return <div className={`card-shadow rounded-3xl border border-line bg-surface ${className}`} {...props} />;
 }
 
 export function Spinner({ className = '' }) {

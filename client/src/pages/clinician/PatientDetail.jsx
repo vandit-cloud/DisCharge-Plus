@@ -60,7 +60,7 @@ function PlanTab({ patientId }) {
               {p.status === 'active' && (
                 <div className="flex flex-wrap items-center gap-3 border-t border-line px-5 py-4">
                   <label htmlFor="closeAs" className="font-semibold">Close this plan as</label>
-                  <select id="closeAs" value={closeAs} onChange={(e) => setCloseAs(e.target.value)} className="min-h-10 rounded-lg border border-line bg-white px-3">
+                  <select id="closeAs" value={closeAs} onChange={(e) => setCloseAs(e.target.value)} className="min-h-10 rounded-lg border border-line bg-surface px-3">
                     <option value="completed">Completed</option>
                     <option value="readmitted">Readmitted</option>
                     <option value="lost_to_followup">Lost to follow-up</option>
@@ -152,7 +152,7 @@ function AdherenceTab({ patientId }) {
     <div className="space-y-6">
       <QueryState query={adherence}>
         {(a) => (
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <Section title="Whole plan"><p className="px-5 py-4"><span className="font-display text-4xl font-bold">{pct(a.percent)}</span> <span className="text-ink-soft">{a.taken} taken · {a.missed} missed</span></p></Section>
             <Section title="Last 7 days"><p className="px-5 py-4"><span className="font-display text-4xl font-bold">{pct(a.last7Days.percent)}</span> <span className="text-ink-soft">{a.last7Days.taken} taken · {a.last7Days.missed} missed</span></p></Section>
           </div>
@@ -251,10 +251,10 @@ export default function PatientDetail() {
             back={{ to: '/d/patients', label: 'Patients' }}
             title={p.fullName}
             subtitle={[`${p.age} y`, p.gender, p.district, LANGUAGE_NAME[p.preferredLanguage], p.abhaId && `ABHA ${formatAbha(p.abhaId)}`].filter(Boolean).join(' · ')}
-            actions={<a href={`tel:${p.phone}`} className="inline-flex min-h-12 items-center rounded-xl border border-line bg-white px-5 font-semibold">📞 {formatPhone(p.phone)}</a>}
+            actions={<a href={`tel:${p.phone}`} className="inline-flex min-h-12 items-center rounded-xl border border-line bg-surface px-5 font-semibold">📞 {formatPhone(p.phone)}</a>}
           />
           {location.state?.message && <p className="mb-4 rounded-xl bg-neem-soft px-4 py-3 font-semibold text-neem">{location.state.message}</p>}
-          <div className="mb-6 flex flex-wrap items-center gap-3 rounded-2xl border border-line bg-white px-5 py-4">
+          <div className="mb-6 flex flex-wrap items-center gap-3 rounded-2xl border border-line bg-surface px-5 py-4">
             <RiskBadge band={p.riskBand} />
             <span className="text-ink-soft">{!p.riskBand ? 'Risk is tracked only while a plan is active' : p.riskReasons.length ? p.riskReasons.join(' · ') : 'No risk factors right now'}</span>
           </div>
@@ -266,7 +266,7 @@ export default function PatientDetail() {
                 type="button"
                 aria-selected={tab === name}
                 onClick={() => setTab(name)}
-                className={`-mb-px min-h-11 whitespace-nowrap border-b-3 px-4 font-semibold ${tab === name ? 'border-haldi text-ink' : 'border-transparent text-ink-soft hover:text-ink'}`}
+                className={`-mb-px min-h-11 whitespace-nowrap border-b-3 px-4 font-semibold ${tab === name ? 'border-lagoon text-ink' : 'border-transparent text-ink-soft hover:text-ink'}`}
               >
                 {name}
               </button>

@@ -56,7 +56,7 @@ function PrescriptionRow({ line, index, medications, error, onChange, onRemove, 
   const slotsOk = line.timingSlots.length === needed;
   return (
     <li className="space-y-3 px-5 py-4">
-      <div className="grid gap-3 md:grid-cols-[2fr_1fr_1fr_0.7fr]">
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-[2fr_1fr_1fr_0.7fr]">
         <label className="space-y-1"><span className="text-sm font-semibold">Medicine {index + 1}</span>
           <select value={line.medicationId} onChange={(e) => set({ medicationId: e.target.value })} className={inputClass} aria-invalid={!line.medicationId && Boolean(error)}>
             <option value="">Choose…</option>
@@ -79,7 +79,7 @@ function PrescriptionRow({ line, index, medications, error, onChange, onRemove, 
         <span className="text-sm font-semibold">When:</span>
         {SLOTS.map((slot) => (
           <button key={slot} type="button" aria-pressed={line.timingSlots.includes(slot)} onClick={() => toggleSlot(slot)}
-            className={`min-h-9 rounded-full border px-3 text-sm font-semibold capitalize ${line.timingSlots.includes(slot) ? 'border-ink bg-ink text-white' : 'border-line bg-white text-ink-soft'}`}>
+            className={`min-h-9 rounded-full border px-3 text-sm font-semibold capitalize ${line.timingSlots.includes(slot) ? 'border-brand bg-brand text-on-brand' : 'border-line bg-surface text-ink-soft'}`}>
             {SLOT_ICON[slot]} {slot}
           </button>
         ))}
@@ -201,7 +201,7 @@ export default function PlanEditor() {
         params.get('patientId') && known.isPending ? <p className="text-ink-soft">Loading patient…</p> : <PatientPicker onPick={setPatient} />
       ) : (
         <div className="space-y-6">
-          <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-line bg-white px-5 py-4">
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-line bg-surface px-5 py-4">
             <p><span className="text-ink-soft">Patient:</span> <strong>{patient.fullName}</strong> · {formatPhone(patient.phone)}</p>
             {!params.get('patientId') && <Button variant="ghost" size="sm" onClick={() => setPatient(null)}>Change patient</Button>}
           </div>
@@ -260,7 +260,7 @@ export default function PlanEditor() {
                 <legend className="mb-2 font-semibold">Follow-up protocol</legend>
                 <div className="flex flex-wrap gap-2">
                   {Object.keys(PROTOCOL_LABEL).map((p) => (
-                    <label key={p} className={`inline-flex min-h-10 cursor-pointer items-center rounded-xl border px-4 font-semibold ${form.followUpProtocol === p ? 'border-ink bg-ink text-white' : 'border-line bg-white'}`}>
+                    <label key={p} className={`inline-flex min-h-10 cursor-pointer items-center rounded-xl border px-4 font-semibold ${form.followUpProtocol === p ? 'border-brand bg-brand text-on-brand' : 'border-line bg-surface'}`}>
                       <input type="radio" name="protocol" value={p} checked={form.followUpProtocol === p} onChange={() => setForm({ ...form, followUpProtocol: p })} className="sr-only" />
                       {PROTOCOL_LABEL[p]}
                     </label>
@@ -275,7 +275,7 @@ export default function PlanEditor() {
                     return (
                       <button key={code} type="button" aria-pressed={on}
                         onClick={() => setForm({ ...form, redFlags: on ? form.redFlags.filter((c) => c !== code) : [...form.redFlags, code] })}
-                        className={`min-h-10 rounded-full border px-3 font-semibold ${on ? 'border-kumkum bg-kumkum-soft text-kumkum' : 'border-line bg-white text-ink-soft'}`}>
+                        className={`min-h-10 rounded-full border px-3 font-semibold ${on ? 'border-kumkum bg-kumkum-soft text-kumkum' : 'border-line bg-surface text-ink-soft'}`}>
                         {SYMPTOM_ICON[code]} {symptomLabel(code)}
                       </button>
                     );
@@ -286,7 +286,7 @@ export default function PlanEditor() {
             </div>
           </Section>
 
-          <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-ink px-5 py-4 text-white">
+          <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-brand px-5 py-4 text-on-brand">
             <p>Saving will schedule <strong>{followUpCount} follow-ups</strong> and up to <strong>{doseEstimate} doses</strong> (doses already past are skipped).</p>
             <Button variant="secondary" onClick={submit} disabled={save.isPending}>{save.isPending && <Spinner />} Save plan</Button>
           </div>

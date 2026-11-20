@@ -41,7 +41,7 @@ export default function Home() {
 
       <Link
         to="/p/report"
-        className="flex min-h-16 items-center justify-center gap-3 rounded-2xl bg-kumkum px-5 text-xl font-bold text-white shadow-sm hover:bg-kumkum/90"
+        className="flex min-h-16 items-center justify-center gap-3 rounded-2xl bg-kumkum px-5 text-xl font-bold text-on-danger shadow-sm hover:bg-kumkum/90"
       >
         <span className="text-2xl" aria-hidden="true">🤒</span>
         {t('home.unwell')}
@@ -96,7 +96,7 @@ export default function Home() {
       {nextFollowUp && (
         <Link to="/p/followups" className="block">
           <Card className="flex items-center gap-4 p-4 hover:border-ink/30">
-            <span className="grid size-12 place-items-center rounded-xl bg-haldi-soft text-2xl" aria-hidden="true">
+            <span className="grid size-12 place-items-center rounded-2xl bg-frost text-2xl" aria-hidden="true">
               {FOLLOW_UP_ICON[nextFollowUp.type]}
             </span>
             <div>

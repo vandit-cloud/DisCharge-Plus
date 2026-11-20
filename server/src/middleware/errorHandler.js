@@ -22,6 +22,16 @@ export function errorHandler(err, _req, res, _next) {
   if (err?.type === 'entity.parse.failed') {
     return res.status(400).json({ error: { code: 'BAD_JSON', message: 'The request body is not valid JSON' } });
   }
+  // Other request-body problems from express.json(): too large (413), unknown charset or
+  // encoding (415). They carry their own 4xx status and a message that is safe to show.
+  if (err?.expose && err.status >= 400 && err.status < 500) {
+    const code = err.status === 413 ? 'BODY_TOO_LARGE' : 'BAD_REQUEST_BODY';
+    return res.status(err.status).json({ error: { code, message: err.message } });
+  }
+  // The database is down or restarting (the driver reconnects by itself): ask the client to retry.
+  if (mongoose.connection.readyState !== 1 || err?.name === 'MongooseServerSelectionError') {
+    return res.status(503).json({ error: { code: 'DB_UNAVAILABLE', message: 'The service is starting up. Please try again in a moment' } });
+  }
   if (!env.isTest) console.error(err);
   return res.status(500).json({ error: { code: 'INTERNAL_ERROR', message: 'Something went wrong' } });
 }

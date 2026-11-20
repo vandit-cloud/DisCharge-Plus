@@ -5,7 +5,7 @@
 > *"Read `docs/SESSION-CONTEXT.md` and continue."*
 >
 > **Keep it current:** append to the Session Log (§10) at the end of every working session.
-> Last updated: **2026-09-30**.
+> Last updated: **2026-11-20**.
 
 ---
 
@@ -176,9 +176,10 @@ Key rules:
 
 ## 9. Next steps (in order)
 
+0. Deck is on the FINAL PDF (26 slides, 2026-11-20). Still: align `01-project-profile.md` with the title; commit + push, then reseed Atlas.
+   Project report done (`docs/documentation/`): student checks names/guide, hand-fills certificate date/place/signatures.
 1. Student reads the code in the order listed in `LEARNING_LOG.md` (2026-09-30 entry) and reviews `DECISIONS.md`.
-2. First git commit (not done: the student hasn't asked for one).
-3. Deploy: MongoDB Atlas cluster → Render (`render.yaml`) → Vercel (`client/`, `VITE_API_URL`); reseed Atlas.
+2. ~~First git commit~~ and ~~deploy~~ done (Oct 2026); reseed Atlas before each live demo (demo data ages).
 4. Fill the title-slide placeholders; rehearse the 3-minute demo script in the root README.
 5. Stretch (weeks 11–12): PM-JAY scheme check (FR-10.1).
 
@@ -342,3 +343,117 @@ Key rules:
   teleconsult = silent; tier only (missed critical dose is already urgent, D6); unknown tier = no alert. Recorded as B13.
 - 84/84 server tests pass, client builds. Committed alerts.js + DECISIONS.md + this file; the Android reminder
   changes (reminders.js, PatientShell.jsx, .env.android, package.json, try-reminders.mjs, .gitignore) are still uncommitted.
+
+### 2026-11-17 — Plan: follow-up no-show ML model (not built yet)
+- Committed + pushed the Android reminder work (`8c95ef6`); Vercel redeploys on push.
+- Student wants the "AI-enabled" title to be honest; ~2 days left. Considered a "likely cause of symptoms" model
+  (synthetic data from a knowledge table, ICD-10 labels) -> moved to future scope. **Chosen: follow-up no-show model**,
+  because it trains on real data and serves expected outcome 1 (Follow-up Management).
+  - **Data:** Kaggle "Medical Appointment No Shows" (joniarroba/noshowappointments), ~110,527 public-hospital
+    appointments, Vitoria, Brazil, 2016, file `KaggleV2-May-2016.csv`. Student downloads it (Kaggle login) to
+    `ml/data/` (git-ignored: size + licence). Python 3.12, pandas 3.0, scikit-learn 1.9 already installed.
+  - **Features (only ones our app also has):** age (`Patient.dateOfBirth`), gender, hypertension (~ cardiac protocol),
+    diabetes (diabetes protocol), lead days (dataset: AppointmentDay - ScheduledDay; app: `FollowUp.scheduledDate` -
+    plan creation). Clean: drop age < 0, lead days < 0. Label `No-show` = "Yes".
+  - **Model:** logistic regression (class_weight balanced) in one script `ml/train_noshow.py`: train/test split,
+    print AUC + confusion matrix, export coefficients to `server/src/ml/noshow-model.json`. Node `predictNoShow()`
+    = sigmoid of the weighted sum (no Python on Render). Computed on read, not stored -> no DB / DD change.
+  - **UI (decided 2026-11-17):** on the **Clinician Dashboard**, beside the existing overdue follow-ups, a panel
+    "Upcoming follow-ups (next 7 days), highest no-show risk first", each row with a "Low / Medium / High (n %)"
+    badge. Clinician only; patients never see it. Action it supports: call the high-risk patients first.
+  - **Training time measured:** ~0.5 s (71,959 rows after cleaning, logistic regression). Can be re-run live in the viva.
+  - **Viva framing:** "outreach decision support, trained on public data, to be retrained on our own records" (the app
+    already stores completed / missed = the same label). Weak points to state up front: Brazil outpatients vs rural
+    Gujarat, no distance/travel-cost feature, only 5 inputs, modest AUC.
+  - **Honest limits for the viva:** expect AUC ~0.6-0.7; Brazilian outpatient visits, not Gujarat discharge follow-ups;
+    adherence % (our best signal) is not in the dataset -> retrain on our own data later (future scope).
+  - Student writes the Low/Medium/High thresholds (`TODO(rudra)`).
+  - **Dataset checked (2026-11-17):** `ml/data/KaggleV2-May-2016.csv` extracted from `archive.zip`; 110,527 rows x 14
+    cols, no nulls, no duplicate AppointmentIDs; 20.2 % no-shows. Dirty rows: 1 age < 0, 5 appointments before booking.
+    **Same-day appointments** (lead 0) have 4.6 % no-shows vs 28.5 % for later ones; follow-ups are never same-day,
+    so train on lead >= 1 only. Patients repeat -> split train/test **by PatientId** (no patient in both).
+  - **Licence: CC BY-NC-SA 4.0** (attribution, non-commercial, share-alike). Fine for college/hackathon; credit
+    "Joni Hoppen, Medical Appointment No Shows, Kaggle" on the slide and in the model JSON; the trained model may not
+    be used commercially and must carry the same licence.
+  - **Rejected:** ML-based escalation priority (no outcome data, loses rule-by-rule auditability, decision 7).
+- Also to fix: `docs/01-project-profile.md:8` subtitle wording must match the final title.
+
+### 2026-11-17 — Built: follow-up no-show model
+- `ml/train_noshow.py` (~1 s): cleans the Kaggle CSV (71,959 rows used), splits by PatientId, fits logistic regression,
+  prints AUC + confusion matrix, folds the scaler into raw-input weights (asserted equal), writes
+  `server/src/ml/noshow-model.json` (weights, intercept, metrics, score percentiles, dataset credit, licence).
+- **Results:** test AUC 0.586 (below the 0.6-0.7 guess). Ceiling check: all Kaggle columns = 0.596; an age 13-30 flag = 0.593.
+  Flagging the top quarter (score >= 0.327) catches 31 % of no-shows at 36 % precision (base rate 28.5 %).
+  Weights: lead days +0.172 per ln-day (strongest), diabetes +0.129, hypertension -0.063, age -0.009/yr, male -0.022.
+- **Changed from the plan:** dropped `class_weight="balanced"`: it centred scores on ~50 % so the "n %" badge would overstate
+  risk; unweighted gives real probabilities (DECISIONS B14). Lead days = `scheduledDate - dischargeDate` (plans have no createdAt).
+- `server/src/ml/noShow.js`: `noShowInputs()`, `predictNoShow()`, `noShowBand()` (**TODO(rudra)**, returns null until written).
+- `dashboardService.js` returns `upcomingFollowUps` (scheduled, next 7 days, active plans, riskiest first);
+  `Dashboard.jsx` shows the panel with an "n %" badge (coloured by band once cut-offs exist). Patients never see it.
+- Tests: `tests/unit/noShow.test.js` + dashboard integration assertions; 88/88 pass; client build OK. Not committed.
+- **Later the same day: model v2 + rules (option A).** Discussed with the student why a model can only learn columns that
+  come with outcomes; searched for datasets with distance/income: only synthetic ones (rejected) or real ones without
+  no-show outcomes; Indian studies (Karnataka hypertension PLOS ONE, AIIMS Delhi) cited as evidence for rules instead.
+  - ML: added `missedBefore` (earlier-day misses only; a looser same-day version scored 0.606 but leaks). AUC **0.595**.
+    Welfare scheme (`Scholarship`) tested: 35.0 % vs 27.9 % no-shows but AUC +0.002 only; not added (app has no field).
+  - Rules (`noShowReasons()` in `server/src/ml/noShow.js`): adherence < 60 %, no app activity >= 3 days, district >= 100 km
+    from Vadodara (`server/src/rules/districtDistance.js`, haversine on district HQ coordinates). New
+    `server/src/services/noShowService.js` gathers the facts; dashboard rows show the reasons in amber.
+  - `noShowBand(probability, reasons)` is still **TODO(rudra)**; it may use the reasons (e.g. bump a level for 2+).
+  - Checked on a fresh seed in a temporary DB (dropped after): scores 18-35 %, reasons look right. The local `discharge`
+    DB was seeded ~24 days ago, so everything shows as overdue/inactive: **reseed before the demo** (`npm run seed`).
+  - Health Connect (steps, sleep) -> future scope, as an optional consented beta feeding red-flag rules.
+  - 92/92 server tests pass; client build OK. Not committed.
+- **Robustness + cut-offs (same day).** Student delegated the cut-offs: B16 (percentile bands from the model JSON + bump for
+  2+ rule reasons). Endpoint audit = new `robustness.test.js` (~6,700 bad requests, 0 x 500 after fixing 413/415 -> 500).
+  Reboot: MongoDB service is AUTO_START; added connect retries, startup catch-up sweep, 503 when the DB is down (B17);
+  verified with a scratch simulation (API before DB, DB outage mid-run, DB restart). Client already logs out on 401 and the
+  alert hook treats the first list as the baseline (no alarm storm after a restart). Dashboard guards a missing
+  `upcomingFollowUps` during a deploy. 98/98 tests, build OK. Local DB reseeded today. Demo has no High no-show patient
+  (top scores 0.326-0.328 < 0.329). PM-JAY (FR-10.1) recapped for the student, not built.
+- **Redesign demo (not applied).** Student asked for a teal palette (#EAF7FB #BFEAF2 #63C9D6 #1E7F8C #20343A), a glass look
+  like a reference fintech screenshot, graphs and transitions. Built `docs/design-demo/redesign-demo.html` (open in a
+  browser): clinician dashboard in dark glass with live 17 Nov data (14-day adherence trend uses sample values: would need
+  an API addition), risk donut, escalations-by-tier bars, "whom to phone first" no-show bars with cut-off lines; patient
+  home in light glass inside a phone frame (contrast for NFR-12; "I feel unwell" stays red). Status colours checked with the
+  dataviz validator. Waiting for the student's go-ahead before applying it to `client/`.
+- **Redesign applied (B18).** Tokens + `.theme-dark` in `index.css`; new `ClinicianShell` (top bar), `components/charts.jsx`
+  (CountUp, TrendChart, Donut), rebuilt `Dashboard.jsx`; patient shell with floating glass tab bar, teal sun path, teal
+  logo + favicon. API: `adherenceTrend`, `dischargedLast7Days`, `noShowCutoffs` on `/dashboard` (+ test). Fixed CSS-grid
+  lists stretching to their text width (`grid-cols-1`). Checked by screenshots: dashboard, patients, escalations, escalation
+  detail, patient detail, plan editor (desktop); all clinician + patient pages report no horizontal overflow at 390 px.
+  98/98 tests, build + i18n OK. Not committed. The Android APK still has the old look until rebuilt (`npm run build:android`).
+
+### 2026-11-17 — Project documentation (college report) built
+- Student asked for the project documentation in the format of `docs/SAMPLE DOCUMENTATION FILE.docx`, updated for the
+  new features, with old diagrams changed where needed.
+- New `docs/documentation/`: `DisCharge+_Project_Documentation.docx` + `.pdf` (41 pages), built by `scripts/build_report.py`
+  on the sample file as template (cover, certificate, acknowledgement, preface, index kept and filled; index page numbers are
+  PAGEREF fields filled by `scripts/finish_in_word.ps1`). Names/enrolment/guide taken from the Phase-1 deck (Vandit Doshi
+  243030601029, Smit Gajera 243030601031, Prof. Meeta Ahuja). Certificate date/place/signatures left for hand-filling.
+- New diagrams in `docs/diagrams/`: `usecase-patient`, `usecase-clinician`, `activity-patient`, `activity-clinician`
+  (sample style: login loop + fork bar), `sequence-noshow` (dashboard -> NoShowService -> model), `flowchart.dot`
+  (Graphviz). Reused unchanged: `er-chen.png` (data model unchanged), `sequence.png`, `activity.png` (swimlanes).
+  The deck's combined `usecase.png` and `class.puml` were **not** updated.
+- 17 fresh screenshots (seeded data) in `docs/documentation/screenshots/`; notation symbol images in `symbols/`.
+- PlantUML 1.2026.10 + Graphviz 16.1.1 downloaded to `.tools/` (now git-ignored). Local DB reseeded after the screenshots.
+- No code changed (docs + `.gitignore` only). Not committed.
+
+### 2026-11-20 — Deck moved to the FINAL college format; report check
+- The college issued `docs/BCA_Sem_5_Project_Presentation_Format_and_Instructions FINAL.pdf`: **15 sections** (old 10 + User
+  Interface Design / Screenshots, Limitations, Conclusion, References, THANK YOU), "add each and every screenshot", 5-7+
+  screens with a title and 3-4 lines each. Its list puts Limitations before Future Scope, but its detail pages number them
+  11 = Future Scope, 12 = Limitations; we followed the list (Limitations first). Student may swap if the guide says otherwise.
+- `presentation/build_decks.py` rewritten for it: `DisCharge+_Phase1_Review.pptx` = **26 slides** (sections 1-9, then 12
+  screenshot slides 10.1-10.12 using all 16 report screenshots, dashboard split in two, then 11-15). Slides 2/3 now include
+  the no-show ML model, Android reminders, clinician alerts, Python/scikit-learn/Capacitor. Names + guide now come from the
+  script (were hand edits). Old deck backed up only in the session scratchpad.
+- Diagrams updated: `usecase.puml` (+ Receive Dose Reminder, Predict Follow-up No-show Risk «include» from View Dashboard,
+  Receive Escalation Alert), `class.puml` (+ NoShowModel service class), `architecture.puml` (+ Android app, No-show Model).
+- `audit_decks.py` checks the FINAL order (screenshot run, >= 5 screens): 0 problems. 98/98 server tests pass. No app code changed.
+- Report check against `SAMPLE DOCUMENTATION FILE.docx` (both rendered via Word): same structure, chapters, symbol tables and
+  screenshot style. Fixed: a **blank page 5** (the sample's ~36 padding paragraphs before INDEX + our page break) and a stray
+  control character in `build_report.py` (`` instead of ``) that made a fresh build unreadable in Word. Report is now 40 pages.
+- Known limits: diagram labels on slides 5-9 are below 16 pt (full-size PNGs in `diagrams/`); no screenshot of the Android
+  notification or the browser alert exists (described in text on 10.2 / 10.8).
+

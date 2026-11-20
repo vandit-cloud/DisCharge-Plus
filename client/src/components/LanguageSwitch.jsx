@@ -7,7 +7,7 @@ export function LanguageSwitch({ className = '' }) {
   const { t, i18n } = useTranslation();
   const { setLanguage } = useAuth();
   return (
-    <div role="group" aria-label={t('app.language')} className={`inline-flex rounded-full border border-line bg-white p-0.5 ${className}`}>
+    <div role="group" aria-label={t('app.language')} className={`inline-flex rounded-full border border-line bg-surface p-0.5 ${className}`}>
       {LANGUAGES.map(({ code, label }) => {
         const active = i18n.language === code;
         return (
@@ -17,7 +17,7 @@ export function LanguageSwitch({ className = '' }) {
             lang={code}
             aria-pressed={active}
             onClick={() => setLanguage(code).catch(() => {})}
-            className={`min-h-9 rounded-full px-3 text-sm font-semibold transition-colors ${active ? 'bg-ink text-white' : 'text-ink-soft hover:text-ink'}`}
+            className={`min-h-9 rounded-full px-3 text-sm font-semibold transition-colors ${active ? 'bg-brand text-on-brand' : 'text-ink-soft hover:text-ink'}`}
           >
             {label}
           </button>

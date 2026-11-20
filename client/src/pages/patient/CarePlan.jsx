@@ -43,13 +43,13 @@ export default function CarePlan() {
                 <h2 id="danger-heading" className="text-xl font-bold text-kumkum">⚠ {t('plan.dangerSigns')}</h2>
                 <ul className="mt-3 grid grid-cols-2 gap-2">
                   {p.redFlags.map((code) => (
-                    <li key={code} className="flex items-center gap-2 rounded-xl bg-white p-3 font-semibold">
+                    <li key={code} className="flex items-center gap-2 rounded-xl bg-surface p-3 font-semibold">
                       <span className="text-2xl" aria-hidden="true">{SYMPTOM_ICON[code]}</span>
                       {t(`symptom.${code}`)}
                     </li>
                   ))}
                 </ul>
-                <Link to="/p/report" className="mt-4 flex min-h-14 items-center justify-center gap-2 rounded-xl bg-kumkum px-4 text-lg font-bold text-white">
+                <Link to="/p/report" className="mt-4 flex min-h-14 items-center justify-center gap-2 rounded-xl bg-kumkum px-4 text-lg font-bold text-on-danger">
                   🤒 {t('home.unwell')}
                 </Link>
               </section>

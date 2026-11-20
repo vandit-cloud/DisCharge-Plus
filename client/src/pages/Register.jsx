@@ -91,7 +91,7 @@ export default function Register() {
           <legend className="font-semibold">{t('register.gender')}</legend>
           <div className="grid grid-cols-3 gap-2">
             {['female', 'male', 'other'].map((g) => (
-              <label key={g} className={`flex min-h-12 cursor-pointer items-center justify-center rounded-xl border font-semibold ${form.gender === g ? 'border-ink bg-ink text-white' : 'border-line bg-white'}`}>
+              <label key={g} className={`flex min-h-12 cursor-pointer items-center justify-center rounded-xl border font-semibold ${form.gender === g ? 'border-brand bg-brand text-on-brand' : 'border-line bg-surface'}`}>
                 <input type="radio" name="gender" value={g} checked={form.gender === g} onChange={set('gender')} className="sr-only" />
                 {t(`gender.${g}`)}
               </label>
@@ -111,7 +111,7 @@ export default function Register() {
           <legend className="font-semibold">{t('register.language')}</legend>
           <div className="grid grid-cols-3 gap-2">
             {LANGUAGES.map(({ code, label }) => (
-              <label key={code} lang={code} className={`flex min-h-12 cursor-pointer items-center justify-center rounded-xl border font-semibold ${form.preferredLanguage === code ? 'border-ink bg-ink text-white' : 'border-line bg-white'}`}>
+              <label key={code} lang={code} className={`flex min-h-12 cursor-pointer items-center justify-center rounded-xl border font-semibold ${form.preferredLanguage === code ? 'border-brand bg-brand text-on-brand' : 'border-line bg-surface'}`}>
                 <input type="radio" name="language" value={code} checked={form.preferredLanguage === code}
                   onChange={(e) => { set('preferredLanguage')(e); i18n.changeLanguage(code); }} className="sr-only" />
                 {label}

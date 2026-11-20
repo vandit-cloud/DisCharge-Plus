@@ -69,8 +69,8 @@ export default function EscalationDetail() {
             }
             actions={
               <>
-                {e.patient?.phone && <a href={`tel:${e.patient.phone}`} className="inline-flex min-h-12 items-center rounded-xl border border-line bg-white px-5 font-semibold">📞 {formatPhone(e.patient.phone)}</a>}
-                <Link to={`/d/patients/${e.patientId}`} className="inline-flex min-h-12 items-center rounded-xl border border-line bg-white px-5 font-semibold">View patient →</Link>
+                {e.patient?.phone && <a href={`tel:${e.patient.phone}`} className="inline-flex min-h-12 items-center rounded-xl border border-line bg-surface px-5 font-semibold">📞 {formatPhone(e.patient.phone)}</a>}
+                <Link to={`/d/patients/${e.patientId}`} className="inline-flex min-h-12 items-center rounded-xl border border-line bg-surface px-5 font-semibold">View patient →</Link>
               </>
             }
           />
@@ -81,7 +81,7 @@ export default function EscalationDetail() {
             </p>
           )}
 
-          <div className="grid gap-6 lg:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             <Section title={e.source === 'missed_critical_dose' ? 'Missed dose' : 'What was reported'}>
               <Source escalation={e} />
             </Section>
@@ -117,7 +117,7 @@ export default function EscalationDetail() {
                     maxLength={1000}
                     value={notes}
                     onChange={(ev) => setNotes(ev.target.value)}
-                    className="block w-full rounded-xl border border-line p-3 focus:border-ink focus:outline-none"
+                    className="block w-full rounded-xl border border-line p-3 focus:border-brand focus:outline-none"
                     placeholder="e.g. Called the patient, advised to come to OPD today"
                   />
                   <Button variant="success" onClick={() => act.mutate('resolve')} disabled={act.isPending || !notes.trim()}>

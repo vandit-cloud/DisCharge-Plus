@@ -31,7 +31,7 @@ export function DoseCard({ dose, queryKey }) {
 
   const status = dose.status;
   return (
-    <li className={`rounded-2xl border bg-white p-4 ${status === 'taken' ? 'border-neem/30' : 'border-line'}`}>
+    <li className={`rounded-2xl border bg-surface p-4 ${status === 'taken' ? 'border-neem/30' : 'border-line'}`}>
       <div className="flex items-center gap-3">
         <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-paper text-2xl" aria-hidden="true">
           {prescription.medication.form === 'injection' ? '💉' : prescription.medication.form === 'syrup' ? '🧴' : '💊'}
@@ -61,7 +61,7 @@ export function DoseCard({ dose, queryKey }) {
             type="button"
             onClick={() => mark.mutate()}
             disabled={mark.isPending}
-            className="flex min-h-12 min-w-28 items-center justify-center gap-1.5 rounded-xl bg-neem px-4 font-semibold text-white hover:bg-neem/90"
+            className="flex min-h-12 min-w-28 items-center justify-center gap-1.5 rounded-xl bg-neem px-4 font-semibold text-on-success hover:bg-neem/90"
           >
             {mark.isPending ? <Spinner /> : <span aria-hidden="true">✓</span>} {t('home.markTaken')}
           </button>
