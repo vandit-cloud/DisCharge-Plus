@@ -176,7 +176,7 @@ Key rules:
 
 ## 9. Next steps (in order)
 
-0. Deck is on the FINAL PDF (26 slides, 2026-11-20). Still: align `01-project-profile.md` with the title; commit + push, then reseed Atlas.
+0. Deck is on the FINAL PDF (26 slides, 2026-11-20). Deployed + Atlas reseeded 2026-11-20. Still: rebuild the APK (redesign not in it yet), reseed Atlas again 1-2 days before the demo, align `01-project-profile.md` with the title.
    Project report done (`docs/documentation/`): student checks names/guide, hand-fills certificate date/place/signatures.
 1. Student reads the code in the order listed in `LEARNING_LOG.md` (2026-09-30 entry) and reviews `DECISIONS.md`.
 2. ~~First git commit~~ and ~~deploy~~ done (Oct 2026); reseed Atlas before each live demo (demo data ages).
@@ -456,4 +456,11 @@ Key rules:
   control character in `build_report.py` (`` instead of ``) that made a fresh build unreadable in Word. Report is now 40 pages.
 - Known limits: diagram labels on slides 5-9 are below 16 pt (full-size PNGs in `diagrams/`); no screenshot of the Android
   notification or the browser alert exists (described in text on 10.2 / 10.8).
-
+- Live check + deploy (same day): live site/API were on 8c95ef6, missing the no-show model, trend chart, redesign and server
+  robustness fixes (all uncommitted). Committed as 48887ac (app) + 426eba6 (docs) and pushed; Render + Vercel redeployed
+  (dashboard now returns `adherenceTrend`, `upcomingFollowUps` with `noShowProbability`). `lab-manual/`, `sdo-lab-manual/`
+  and the college-supplied PDFs/docx were left uncommitted on purpose.
+- Atlas reseeded (`MONGODB_URI=<ATLAS_URI> npm run seed`, .env untouched): before, both demo plans had ended (no doses today)
+  and 199 urgent escalations had piled up. After: Kantaben 6 doses today, Bhavna 5, 1 emergency + 7 urgent open.
+  APK and site verified against the same live API (APK origin `https://localhost` passes CORS). The APK on disk predates the
+  redesign: rebuild with `npm run build:android` + `gradlew assembleDebug`.
